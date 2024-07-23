@@ -11,10 +11,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received showDataFrame copy of the GNU General Public License
  * along with StatusMCServerTool. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.devparada.statusmcservertool;
+package com.devparada.frame;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -25,17 +25,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
+import com.devparada.logic.StatusMCServer;
+import java.awt.event.ActionEvent;
 
 /**
  *
  * @author devparada
  */
-public class StatusMCServerTool extends javax.swing.JFrame {
+public class StatusMCServerFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form StatusMCServerTool
+     * Creates new form StatusMCServer
      */
-    public StatusMCServerTool() {
+    public StatusMCServerFrame() {
         initComponents();
     }
 
@@ -51,7 +53,7 @@ public class StatusMCServerTool extends javax.swing.JFrame {
         JSclPnl = new javax.swing.JScrollPane();
         jTxtArResult = new javax.swing.JTextArea();
         jLblNameServer = new javax.swing.JLabel();
-        jBtnComprobar = new javax.swing.JButton();
+        jBtnCheck = new javax.swing.JButton();
         jTxtNameServer = new javax.swing.JTextField();
         jLblTxtArResult = new javax.swing.JLabel();
 
@@ -65,12 +67,7 @@ public class StatusMCServerTool extends javax.swing.JFrame {
 
         jLblNameServer.setText("Server IP (with port if different port):");
 
-        jBtnComprobar.setText("Check status");
-        jBtnComprobar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBtnComprobarMouseClicked(evt);
-            }
-        });
+        jBtnCheck.setText("Check status");
 
         jLblTxtArResult.setText("Server status:");
 
@@ -92,7 +89,7 @@ public class StatusMCServerTool extends javax.swing.JFrame {
                             .addComponent(jTxtNameServer, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jBtnComprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBtnCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -104,7 +101,7 @@ public class StatusMCServerTool extends javax.swing.JFrame {
                     .addComponent(jLblNameServer, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTxtNameServer, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jBtnComprobar)
+                .addComponent(jBtnCheck)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLblTxtArResult)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -114,11 +111,6 @@ public class StatusMCServerTool extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jBtnComprobarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnComprobarMouseClicked
-        jTxtArResult.setText("");
-        obtainData(jTxtNameServer.getText());
-    }//GEN-LAST:event_jBtnComprobarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -137,37 +129,78 @@ public class StatusMCServerTool extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServerTool.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServerTool.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServerTool.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServerTool.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                StatusMCServerTool status = new StatusMCServerTool();
-                status.setVisible(true);
+                StatusMCServerFrame frame = new StatusMCServerFrame();
+                frame.setVisible(true);
+                frame.start();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JSclPnl;
-    private javax.swing.JButton jBtnComprobar;
+    private javax.swing.JButton jBtnCheck;
     private javax.swing.JLabel jLblNameServer;
     private javax.swing.JLabel jLblTxtArResult;
     private javax.swing.JTextArea jTxtArResult;
     private javax.swing.JTextField jTxtNameServer;
     // End of variables declaration//GEN-END:variables
 
-    public void obtainData(String ipServer) {
+    private void start() {
+        final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
+        final String[] ipServerArrayFinal = new String[1];
 
+        // Add Listener of the click in the boton JBtnCheck
+        jBtnCheck.addActionListener((ActionEvent e) -> {
+            if (jTxtNameServer.getText().length() != 0) {
+                System.out.println("Test jBtnCheck");
+                String[] ipServerArray = jTxtNameServer.getText().split(":");
+
+                String ipServer = ipServerArray[0];
+                ipServerArrayFinal[0] = ipServer;
+
+                int port;
+
+                if (ipServerArray[1].length() == 0) {
+                    port = 25565; // Default port of the servers
+                } else {
+                    port = Integer.parseInt(ipServerArray[1]);
+                }
+
+                StatusMCServer statusServer = new StatusMCServer(ipServer, port);
+                statusServerArrayFinal[0] = statusServer;
+
+                showDataFrame(statusServerArrayFinal[0], ipServerArrayFinal[0]);
+            }
+        });
+    }
+
+    private void showDataFrame(StatusMCServer statusServer, String ipServer) {
+        System.out.println("Test showDataFrame");
+        if ("0".equals(statusServer.obtainData(ipServer))) {
+            jLblTxtArResult.setText("Server status:");
+            jTxtArResult.setText("ERROR: Not found this server");
+        } else {
+            jLblTxtArResult.setText("Server status: " + ipServer);
+            jTxtArResult.setText(statusServer.obtainData(ipServer));
+        }
+    }
+
+    public void obtainData(String ipServer) {
         if (!ipServer.isEmpty()) {
             String urlJSON = "https://api.mcstatus.io/v2/status/java/" + ipServer;  // URL of the remote JSON
             try {

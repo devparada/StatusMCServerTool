@@ -39,7 +39,7 @@
                           <Component id="jTxtNameServer" pref="453" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jBtnComprobar" min="-2" pref="181" max="-2" attributes="0"/>
+                              <Component id="jBtnCheck" min="-2" pref="181" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -58,7 +58,7 @@
                   <Component id="jTxtNameServer" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="32767" attributes="0"/>
-              <Component id="jBtnComprobar" min="-2" max="-2" attributes="0"/>
+              <Component id="jBtnCheck" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="32767" attributes="0"/>
               <Component id="jLblTxtArResult" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -90,13 +90,10 @@
         <Property name="text" type="java.lang.String" value="Server IP (with port if different port):"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnComprobar">
+    <Component class="javax.swing.JButton" name="jBtnCheck">
       <Properties>
         <Property name="text" type="java.lang.String" value="Check status"/>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBtnComprobarMouseClicked"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTxtNameServer">
     </Component>
