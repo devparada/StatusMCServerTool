@@ -11,20 +11,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received showDataFrame copy of the GNU General Public License
+ * You should have received a copy of the GNU General Public License
  * along with StatusMCServerTool. If not, see <https://www.gnu.org/licenses/>.
  */
 package com.devparada.frame;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 import com.devparada.logic.StatusMCServer;
 import java.awt.event.ActionEvent;
 
@@ -35,7 +26,7 @@ import java.awt.event.ActionEvent;
 public class StatusMCServerFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form StatusMCServer
+     * Creates new form StatusMCServerFrame
      */
     public StatusMCServerFrame() {
         initComponents();
@@ -175,7 +166,7 @@ public class StatusMCServerFrame extends javax.swing.JFrame {
 
                 int port;
 
-                if (ipServerArray[1].length() == 0) {
+                if (ipServerArray.length != 2) {
                     port = 25565; // Default port of the servers
                 } else {
                     port = Integer.parseInt(ipServerArray[1]);
@@ -197,68 +188,6 @@ public class StatusMCServerFrame extends javax.swing.JFrame {
         } else {
             jLblTxtArResult.setText("Server status: " + ipServer);
             jTxtArResult.setText(statusServer.obtainData(ipServer));
-        }
-    }
-
-    public void obtainData(String ipServer) {
-        if (!ipServer.isEmpty()) {
-            String urlJSON = "https://api.mcstatus.io/v2/status/java/" + ipServer;  // URL of the remote JSON
-            try {
-                URL url = new URL(urlJSON);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-                conn.setRequestProperty("Accept", "application/json");
-
-                if (conn.getResponseCode() != 200) {
-                    jLblTxtArResult.setText("Server status:");
-                    jTxtArResult.setText("ERROR: Not found this server");
-                } else {
-                    jLblTxtArResult.setText("Server status: " + ipServer);
-                    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-                    StringBuilder sb = new StringBuilder();
-                    String output;
-                    while ((output = br.readLine()) != null) {
-                        sb.append(output);
-                    }
-
-                    conn.disconnect();
-
-                    JsonObject jsonReceived = JsonParser.parseString(sb.toString()).getAsJsonObject();
-                    showData(jsonReceived);
-                }
-            } catch (JsonSyntaxException | IOException e) {
-            }
-        } else {
-            jTxtArResult.setText("Empty server IP");
-        }
-    }
-
-    public void showData(JsonObject jsonReceived) {
-        for (String key : jsonReceived.keySet()) {
-            JsonElement value = jsonReceived.get(key);
-
-            String textResult = "";
-            String statusServerOnline;
-
-            if ("online".equals(key)) {
-                statusServerOnline = "offline";
-                if ("true".equals(value.getAsString())) {
-                    statusServerOnline = "online";
-                }
-                textResult = "The server is " + statusServerOnline + "\n";
-            }
-
-            if ("version".equals(key)) {
-                String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
-                textResult += "Server version " + nameClean + "\n";
-            }
-
-            if ("players".equals(key)) {
-                String playersNumber = value.getAsJsonObject().get("online").getAsString();
-                textResult += "Players playing " + playersNumber + "\n";
-            }
-
-            jTxtArResult.setText(jTxtArResult.getText() + textResult);
         }
     }
 }
