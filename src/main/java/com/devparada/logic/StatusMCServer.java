@@ -11,7 +11,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
- * You should have received showDataFrame copy of the GNU General Public License
+ * You should have received a copy of the GNU General Public License
  * along with StatusMCServerTool. If not, see <https://www.gnu.org/licenses/>.
  */
 package com.devparada.logic;
@@ -41,6 +41,8 @@ public class StatusMCServer {
     }
 
     public String obtainData(String ipServer) {
+        String stringReturn = "0";
+
         if (!ipServer.isEmpty()) {
             String urlJSON = "https://api.mcstatus.io/v2/status/java/" + ipServer;  // URL of the remote JSON
             try {
@@ -49,9 +51,7 @@ public class StatusMCServer {
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Accept", "application/json");
 
-                if (conn.getResponseCode() != 200) {
-                    return "0";
-                } else {
+                if (conn.getResponseCode() == 200) {
                     BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
                     StringBuilder sb = new StringBuilder();
                     String output;
@@ -66,10 +66,8 @@ public class StatusMCServer {
                 }
             } catch (JsonSyntaxException | IOException e) {
             }
-        } else {
-            return "0";
         }
-        return "0";
+        return stringReturn;
     }
 
     public String showData(JsonObject jsonReceived) {
