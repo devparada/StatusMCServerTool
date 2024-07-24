@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.devparada</groupId>
     <artifactId>StatusMCServerTool</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <packaging>jar</packaging>
     
     <!-- Dependencies -->
@@ -79,4 +79,4 @@
         <exec.mainClass>com.devparada.frame.StatusMCServerFrame</exec.mainClass>
         <maven.install.skip>true</maven.install.skip>
     </properties>
-</project> 
+</project>
