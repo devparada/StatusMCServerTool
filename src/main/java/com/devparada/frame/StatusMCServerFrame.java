@@ -17,6 +17,7 @@
 package com.devparada.frame;
 
 import com.devparada.logic.StatusMCServer;
+import com.devparada.persistency.DBManager;
 import java.awt.event.ActionEvent;
 
 /**
@@ -152,6 +153,14 @@ public class StatusMCServerFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void start() {
+        // Test DB
+        String sql = """
+                  CREATE TABLE MCServers(
+                  id INT primary key,
+                   name varchar(255), host varchar(255), ip INT)""";
+
+        // Exception
+        DBManager.createTable(sql);
         final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
         final String[] ipServerArrayFinal = new String[1];
 
