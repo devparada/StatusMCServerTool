@@ -19,6 +19,7 @@ package com.devparada.frame;
 import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
 import java.awt.event.ActionEvent;
+import java.io.File;
 
 /**
  *
@@ -121,13 +122,13 @@ public class StatusMCServerFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StatusMCServer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(StatusMCServerFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -154,13 +155,10 @@ public class StatusMCServerFrame extends javax.swing.JFrame {
 
     private void start() {
         // Test DB
-        String sql = """
-                  CREATE TABLE MCServers(
-                  id INT primary key,
-                   name varchar(255), host varchar(255), ip INT)""";
-
-        // Exception
-        DBManager.createTable(sql);
+        File DB = new File("MCServers.db");
+        if (!DB.exists()) {
+            DBManager.createTable();
+        }
         final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
         final String[] ipServerArrayFinal = new String[1];
 

@@ -16,11 +16,14 @@ import java.sql.Statement;
 public class DBManager {
 
     public static Connection connection;
+    private static final String SQL_CREATE = """
+                  CREATE TABLE MCServers(
+                  id INT primary key,
+                  name varchar(255), host varchar(255), ip INT)""";
 
     public static Connection connect() {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:MCServers.db");
-
             System.out.println("Connect");
         } catch (SQLException e) {
             // Remove
@@ -29,12 +32,12 @@ public class DBManager {
         return connection;
     }
 
-    public static boolean createTable(String table) {
+    public static boolean createTable() {
         Statement stmt;
         try {
             connect();
             stmt = connection.createStatement();
-            stmt.executeUpdate(table);
+            stmt.executeUpdate(SQL_CREATE);
             stmt.close();
             connection.close();
             return true;
