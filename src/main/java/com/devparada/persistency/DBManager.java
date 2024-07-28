@@ -20,12 +20,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author devparada
  */
 public class DBManager {
+
+    private static final Logger logger = Logger.getLogger(DBManager.class.getName());
 
     public static Connection connection;
     private static final String SQL_CREATE = """
@@ -38,8 +42,7 @@ public class DBManager {
             connection = DriverManager.getConnection("jdbc:sqlite:MCServers.db");
             System.out.println("Connect");
         } catch (SQLException e) {
-            // Remove
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "An error occurred", e);
         }
         return connection;
     }
@@ -54,10 +57,8 @@ public class DBManager {
             connection.close();
             return true;
         } catch (SQLException e) {
-            // Remove
-            e.printStackTrace();
+            logger.log(Level.SEVERE, "An error occurred", e);
         }
         return false;
     }
-
 }

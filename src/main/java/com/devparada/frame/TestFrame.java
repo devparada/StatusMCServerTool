@@ -241,47 +241,48 @@ public class TestFrame extends javax.swing.JFrame {
     }
 
     private void addPanel() {
-        JPanel newPanel = new JPanel();
+        JPanel jNewPanel = new JPanel();
 
-        JLabel jLabel1 = new JLabel("Test 1");
-        JLabel jLabel2 = new JLabel("Host:25555");
-        JLabel jLabel3 = new JLabel("Test 3");
-        JLabel jLabel4 = new JLabel("Test 4");
-        JLabel jLabel5 = new JLabel("Test 5");
+        JLabel jLabelE1 = new JLabel("Test 1");
+        JLabel jLabelE2 = new JLabel("Host:25555");
+        JLabel jLabelE3 = new JLabel("Test 3");
+        JLabel jLabelE4 = new JLabel("Test 4");
+        JLabel jLabelE5 = new JLabel("Test 5");
 
-        GroupLayout jPanel33Layout = new GroupLayout(newPanel);
-        newPanel.setLayout(jPanel33Layout);
+        GroupLayout jLayoutE = new GroupLayout(jNewPanel);
+        jNewPanel.setLayout(jLayoutE);
 
-        JPanel panelE = new JPanel();
-        panelE.setLayout(new java.awt.GridLayout(2, 2));
+        JPanel jPanelData = new JPanel();
+        jPanelData.setLayout(new java.awt.GridLayout(2, 2));
 
-        jPanel33Layout.setHorizontalGroup(
-                jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel33Layout.createSequentialGroup()
+        jLayoutE.setHorizontalGroup(
+                jLayoutE.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jLayoutE.createSequentialGroup()
                                 .addContainerGap(224, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addComponent(panelE, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(224, Short.MAX_VALUE))
         );
-        jPanel33Layout.setVerticalGroup(
-                jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panelE, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jLayoutE.setVerticalGroup(
+                jLayoutE.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jLayoutE.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jLayoutE.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        newPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        // Debugging setBorder
+        jNewPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        panelE.add(jLabel2);
-        panelE.add(jLabel3);
-        panelE.add(jLabel4);
-        panelE.add(jLabel5);
+        jPanelData.add(jLabelE2);
+        jPanelData.add(jLabelE3);
+        jPanelData.add(jLabelE4);
+        jPanelData.add(jLabelE5);
 
-        jPnlMain.add(newPanel);
+        jPnlMain.add(jNewPanel);
         jPnlMain.revalidate();
         jPnlMain.repaint();
         start();
