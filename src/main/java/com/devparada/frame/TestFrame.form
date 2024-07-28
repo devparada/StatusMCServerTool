@@ -76,7 +76,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,96,0,0,3,68"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,106,0,0,3,74"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
@@ -108,9 +108,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="208" max="32767" attributes="0"/>
+                          <EmptySpace pref="211" max="32767" attributes="0"/>
                           <Component id="jLblAdd" min="-2" pref="416" max="-2" attributes="0"/>
-                          <EmptySpace pref="209" max="32767" attributes="0"/>
+                          <EmptySpace pref="212" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -122,9 +122,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
                           <Component id="jLblAdd" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="54" max="32767" attributes="0"/>
                           <Component id="jBtnAdd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -155,61 +155,84 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="224" max="32767" attributes="0"/>
-                          <Component id="jLblImage" min="-2" pref="64" max="-2" attributes="0"/>
-                          <EmptySpace pref="45" max="32767" attributes="0"/>
-                          <Component id="jPnlInfo" min="-2" pref="290" max="-2" attributes="0"/>
-                          <EmptySpace pref="224" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="839" max="32767" attributes="0"/>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Component id="jPnlDataEx" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLblImage" min="-2" pref="69" max="-2" attributes="0"/>
-                              <Component id="jPnlInfo" min="-2" pref="120" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="191" max="32767" attributes="0"/>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Component id="jPnlDataEx" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLblImage">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="jLabel2"/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JPanel" name="jPnlInfo">
+                <Container class="javax.swing.JPanel" name="jPnlDataEx">
 
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-                    <Property name="columns" type="int" value="2"/>
-                    <Property name="rows" type="int" value="2"/>
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace pref="204" max="32767" attributes="0"/>
+                              <Component id="jLblImage" min="-2" pref="64" max="-2" attributes="0"/>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                              <Component id="jPnlInfo" min="-2" pref="308" max="-2" attributes="0"/>
+                              <EmptySpace pref="250" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="42" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jPnlInfo" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="jLblImage" min="-2" pref="69" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLblIpHosts">
+                    <Component class="javax.swing.JLabel" name="jLblImage">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="ip.a.a.a:25555"/>
+                        <Property name="text" type="java.lang.String" value="jLabel2"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLblOnline">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Online"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLblVersion">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Version MC"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLblPlayers">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Players"/>
-                      </Properties>
-                    </Component>
+                    <Container class="javax.swing.JPanel" name="jPnlInfo">
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                        <Property name="columns" type="int" value="2"/>
+                        <Property name="rows" type="int" value="2"/>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="jLblIpHosts">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="ip.a.a.a:25555"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLblOnline">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Online"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLblVersion">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Version MC"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="jLblPlayers">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Players"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
                   </SubComponents>
                 </Container>
               </SubComponents>

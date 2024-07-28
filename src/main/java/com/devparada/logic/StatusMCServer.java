@@ -40,9 +40,7 @@ public class StatusMCServer {
         this.port = port;
     }
 
-    public String obtainData(String ipServer) {
-        String stringReturn = "0";
-
+    public JsonObject fetchData(String ipServer) {
         if (!ipServer.isEmpty()) {
             String urlJSON = "https://api.mcstatus.io/v2/status/java/" + ipServer;  // URL of the remote JSON
             try {
@@ -62,12 +60,20 @@ public class StatusMCServer {
                     conn.disconnect();
 
                     JsonObject jsonReceived = JsonParser.parseString(sb.toString()).getAsJsonObject();
-                    return showData(jsonReceived);
+                    return jsonReceived;
                 }
             } catch (JsonSyntaxException | IOException e) {
             }
         }
-        return stringReturn;
+        return null;
+    }
+
+    public JsonObject obtainDataJSON(String ipServer) {
+        return fetchData(ipServer);
+    }
+
+    public String obtainData(String ipServer) {
+        return showData(fetchData(ipServer));
     }
 
     public String showData(JsonObject jsonReceived) {
@@ -100,4 +106,43 @@ public class StatusMCServer {
         return textResult;
     }
 
+    public String showDataSection(String ipServer, String section) {
+        // Debugging Test
+        System.out.println("Test showDataSection");
+
+        JsonObject jsonReceived = obtainDataJSON(ipServer);
+        String textResult = "N/A";
+
+        for (String key : jsonReceived.keySet()) {
+            JsonElement value = jsonReceived.get(key);
+
+            switch (section) {
+                case "online" -> {
+                    String statusServerOnline;
+                    if (section.equals(key)) {
+                        statusServerOnline = "offline";
+                        if ("true".equals(value.getAsString())) {
+                            statusServerOnline = "online";
+                        }
+                        textResult = statusServerOnline;
+                    }
+                }
+                case "version" -> {
+                    if (section.equals(key)) {
+                        String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
+                        textResult = nameClean;
+                    }
+                }
+                case "players" -> {
+                    if (section.equals(key)) {
+                        String playersNumber = value.getAsJsonObject().get("online").getAsString();
+                        String maxPlayers = value.getAsJsonObject().get("max").getAsString();
+                        textResult = playersNumber + "/" + maxPlayers;
+                    }
+                }
+
+            }
+        }
+        return textResult;
+    }
 }

@@ -33,7 +33,7 @@ import javax.swing.JPanel;
 public class TestFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form StatusMCServerFrame
+     * Creates new form TestFrame
      */
     public TestFrame() {
         initComponents();
@@ -58,6 +58,7 @@ public class TestFrame extends javax.swing.JFrame {
         jLblAdd = new javax.swing.JLabel();
         jBtnAdd = new javax.swing.JButton();
         jPnlData = new javax.swing.JPanel();
+        jPnlDataEx = new javax.swing.JPanel();
         jLblImage = new javax.swing.JLabel();
         jPnlInfo = new javax.swing.JPanel();
         jLblIpHosts = new javax.swing.JLabel();
@@ -129,9 +130,9 @@ public class TestFrame extends javax.swing.JFrame {
         jPanelIntroLayout.setHorizontalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(208, Short.MAX_VALUE)
+                .addContainerGap(211, Short.MAX_VALUE)
                 .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(212, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBtnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,9 +141,9 @@ public class TestFrame extends javax.swing.JFrame {
         jPanelIntroLayout.setVerticalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 54, Short.MAX_VALUE)
                 .addComponent(jBtnAdd)
                 .addContainerGap())
         );
@@ -165,25 +166,40 @@ public class TestFrame extends javax.swing.JFrame {
         jLblPlayers.setText("Players");
         jPnlInfo.add(jLblPlayers);
 
+        javax.swing.GroupLayout jPnlDataExLayout = new javax.swing.GroupLayout(jPnlDataEx);
+        jPnlDataEx.setLayout(jPnlDataExLayout);
+        jPnlDataExLayout.setHorizontalGroup(
+            jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlDataExLayout.createSequentialGroup()
+                .addContainerGap(204, Short.MAX_VALUE)
+                .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(250, Short.MAX_VALUE))
+        );
+        jPnlDataExLayout.setVerticalGroup(
+            jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlDataExLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPnlDataLayout = new javax.swing.GroupLayout(jPnlData);
         jPnlData.setLayout(jPnlDataLayout);
         jPnlDataLayout.setHorizontalGroup(
             jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnlDataLayout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
-                .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+            .addGap(0, 839, Short.MAX_VALUE)
+            .addGroup(jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPnlDataEx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPnlDataLayout.setVerticalGroup(
             jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlDataLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 191, Short.MAX_VALUE)
+            .addGroup(jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPnlDataEx, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPnlMain.add(jPnlData);
@@ -235,19 +251,37 @@ public class TestFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new StatusMCServerFrame().setVisible(true);
+                TestFrame testFrame = new TestFrame();
+                testFrame.setVisible(true);
+                testFrame.start();
             }
         });
     }
 
     private void addPanel() {
         JPanel jNewPanel = new JPanel();
+        String ipServer = "";
+        int port = 25565; // Default port of the servers
 
-        JLabel jLabelE1 = new JLabel("Test 1");
-        JLabel jLabelE2 = new JLabel("Host:25555");
-        JLabel jLabelE3 = new JLabel("Test 3");
-        JLabel jLabelE4 = new JLabel("Test 4");
-        JLabel jLabelE5 = new JLabel("Test 5");
+        String JLabelText = jTextField1.getText();
+
+        if (JLabelText.length() != 0) {
+            String[] ipServerArray = JLabelText.split(":");
+
+            ipServer = ipServerArray[0];
+
+            if (ipServerArray.length == 2) {
+                port = Integer.parseInt(ipServerArray[1]);
+            }
+        }
+
+        StatusMCServer statusServer = new StatusMCServer(ipServer, port);
+
+        JLabel jLabelE1 = new JLabel(JLabelText);
+        JLabel jLabelE2 = new JLabel(JLabelText);
+        JLabel jLabelE3 = new JLabel(statusServer.showDataSection(JLabelText, "online"));
+        JLabel jLabelE4 = new JLabel(statusServer.showDataSection(JLabelText, "version"));
+        JLabel jLabelE5 = new JLabel(statusServer.showDataSection(JLabelText, "players"));
 
         GroupLayout jLayoutE = new GroupLayout(jNewPanel);
         jNewPanel.setLayout(jLayoutE);
@@ -258,25 +292,26 @@ public class TestFrame extends javax.swing.JFrame {
         jLayoutE.setHorizontalGroup(
                 jLayoutE.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(jLayoutE.createSequentialGroup()
-                                .addContainerGap(224, Short.MAX_VALUE)
+                                .addContainerGap(204, Short.MAX_VALUE)
                                 .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 290, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(224, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                                .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(250, Short.MAX_VALUE))
         );
         jLayoutE.setVerticalGroup(
                 jLayoutE.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(GroupLayout.Alignment.TRAILING, jLayoutE.createSequentialGroup()
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap(42, Short.MAX_VALUE)
                                 .addGroup(jLayoutE.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         // Debugging setBorder
         jNewPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
+        // Add labels of the panel
         jPanelData.add(jLabelE2);
         jPanelData.add(jLabelE3);
         jPanelData.add(jLabelE4);
@@ -288,7 +323,7 @@ public class TestFrame extends javax.swing.JFrame {
         start();
     }
 
-    public JLabel getlabel(JPanel panel) {
+    public JLabel getLabel(JPanel panel) {
         for (Component comp : panel.getComponents()) {
             if (comp instanceof JLabel jLabel) {
                 return jLabel;
@@ -301,10 +336,11 @@ public class TestFrame extends javax.swing.JFrame {
         final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
         final String[] ipServerArrayFinal = new String[1];
 
-        System.out.println(getlabel(newPanel));
+        // Debugging getLabel and newPanel
+        System.out.println(getLabel(newPanel));
         System.out.println(newPanel);
 
-        //String JLabelText = getlabel(newPanel).getText();
+        //String JLabelText = getLabel(newPanel).getText();
         String JLabelText = "a";
 
         if (JLabelText.length() != 0) {
@@ -325,7 +361,7 @@ public class TestFrame extends javax.swing.JFrame {
             StatusMCServer statusServer = new StatusMCServer(ipServer, port);
             statusServerArrayFinal[0] = statusServer;
 
-            showDataFrame(statusServerArrayFinal[0], ipServerArrayFinal[0]);
+            // showDataFrame(statusServerArrayFinal[0], ipServerArrayFinal[0]);
         }
 
         /*
@@ -387,16 +423,17 @@ public class TestFrame extends javax.swing.JFrame {
         });*/
     }
 
+    /*
     private void showDataFrame(StatusMCServer statusServer, String ipServer) {
         System.out.println("Test showDataFrame");
         if ("0".equals(statusServer.obtainData(ipServer))) {
-            // jLblTxtArResult.setText("Server status:");
-            // jTxtArResult.setText("ERROR: Not found this server");
+            jLblTxtArResult.setText("Server status:");
+            jTxtArResult.setText("ERROR: Not found this server");
         } else {
-            //  jLblTxtArResult.setText("Server status: " + ipServer);
-            //  jTxtArResult.setText(statusServer.obtainData(ipServer));
+            jLblTxtArResult.setText("Server status: " + ipServer);
+            jTxtArResult.setText(statusServer.obtainData(ipServer));
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
@@ -411,6 +448,7 @@ public class TestFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLblVersion;
     private javax.swing.JPanel jPanelIntro;
     private javax.swing.JPanel jPnlData;
+    private javax.swing.JPanel jPnlDataEx;
     private javax.swing.JPanel jPnlInfo;
     private javax.swing.JPanel jPnlMain;
     private javax.swing.JScrollPane jScrollPane;
