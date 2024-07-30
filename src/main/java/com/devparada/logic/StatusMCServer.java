@@ -79,68 +79,68 @@ public class StatusMCServer {
     public String showData(JsonObject jsonReceived) {
         String textResult = "";
 
-        for (String key : jsonReceived.keySet()) {
-            JsonElement value = jsonReceived.get(key);
+        if (jsonReceived != null) {
+            for (String key : jsonReceived.keySet()) {
+                JsonElement value = jsonReceived.get(key);
 
-            String statusServerOnline;
+                if ("online".equals(key)) {
+                    String statusServerOnline = "offline";
 
-            if ("online".equals(key)) {
-                statusServerOnline = "offline";
-                if ("true".equals(value.getAsString())) {
-                    statusServerOnline = "online";
+                    if ("true".equals(value.getAsString())) {
+                        statusServerOnline = "online";
+                    }
+                    textResult = "The server is " + statusServerOnline + "\n";
                 }
-                textResult = "The server is " + statusServerOnline + "\n";
-            }
 
-            if ("version".equals(key)) {
-                String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
-                textResult += "Server version " + nameClean + "\n";
-            }
+                if ("version".equals(key)) {
+                    String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
+                    textResult += "Server version " + nameClean + "\n";
+                }
 
-            if ("players".equals(key)) {
-                String playersNumber = value.getAsJsonObject().get("online").getAsString();
-                textResult += "Players playing " + playersNumber + "\n";
-            }
+                if ("players".equals(key)) {
+                    String playersNumber = value.getAsJsonObject().get("online").getAsString();
+                    textResult += "Players playing " + playersNumber + "\n";
+                }
 
+            }
         }
         return textResult;
     }
 
     public String showDataSection(String ipServer, String section) {
-        // Debugging Test
-        System.out.println("Test showDataSection");
-
         JsonObject jsonReceived = obtainDataJSON(ipServer);
         String textResult = "N/A";
 
-        for (String key : jsonReceived.keySet()) {
-            JsonElement value = jsonReceived.get(key);
+        if (jsonReceived != null) {
+            for (String key : jsonReceived.keySet()) {
+                JsonElement value = jsonReceived.get(key);
 
-            switch (section) {
-                case "online" -> {
-                    String statusServerOnline;
-                    if (section.equals(key)) {
-                        statusServerOnline = "offline";
-                        if ("true".equals(value.getAsString())) {
-                            statusServerOnline = "online";
+                switch (section) {
+                    case "online" -> {
+                        String statusServerOnline;
+                        if (section.equals(key)) {
+                            statusServerOnline = "offline";
+                            if ("true".equals(value.getAsString())) {
+                                statusServerOnline = "online";
+                            }
+                            textResult = statusServerOnline;
                         }
-                        textResult = statusServerOnline;
                     }
-                }
-                case "version" -> {
-                    if (section.equals(key)) {
-                        String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
-                        textResult = nameClean;
+                    case "version" -> {
+                        if (section.equals(key)) {
+                            String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
+                            textResult = nameClean;
+                        }
                     }
-                }
-                case "players" -> {
-                    if (section.equals(key)) {
-                        String playersNumber = value.getAsJsonObject().get("online").getAsString();
-                        String maxPlayers = value.getAsJsonObject().get("max").getAsString();
-                        textResult = playersNumber + "/" + maxPlayers;
+                    case "players" -> {
+                        if (section.equals(key)) {
+                            String playersNumber = value.getAsJsonObject().get("online").getAsString();
+                            String maxPlayers = value.getAsJsonObject().get("max").getAsString();
+                            textResult = playersNumber + "/" + maxPlayers;
+                        }
                     }
-                }
 
+                }
             }
         }
         return textResult;
