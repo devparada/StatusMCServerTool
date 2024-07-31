@@ -47,81 +47,89 @@ public class TestFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jDialog1 = new javax.swing.JDialog();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jDlgAdd = new javax.swing.JDialog();
+        jLblAdd = new javax.swing.JLabel();
+        jTxtAdd = new javax.swing.JTextField();
+        jBtnAdd = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         jPnlMain = new javax.swing.JPanel();
         jPanelIntro = new javax.swing.JPanel();
-        jLblAdd = new javax.swing.JLabel();
-        jBtnAdd = new javax.swing.JButton();
+        jLblIntro = new javax.swing.JLabel();
+        jBtnIntroAdd = new javax.swing.JButton();
         jPnlData = new javax.swing.JPanel();
         jPnlDataEx = new javax.swing.JPanel();
         jLblImage = new javax.swing.JLabel();
         jPnlInfo = new javax.swing.JPanel();
-        jLblIpHosts = new javax.swing.JLabel();
-        jLblOnline = new javax.swing.JLabel();
         jLblVersion = new javax.swing.JLabel();
+        jLblOnline = new javax.swing.JLabel();
         jLblPlayers = new javax.swing.JLabel();
+        jLblIpHosts = new javax.swing.JLabel();
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("jLabel4");
+        jDlgAdd.setTitle("Add Server");
 
-        jTextField1.setText("jTextField1");
+        jLblAdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblAdd.setText("Intraduce the server IP (with port if different)");
 
-        jButton2.setText("Confirm");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jTxtAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTxtAdd.setText("myserverminecraft.ddns.net:24321");
+
+        jBtnAdd.setBackground(new java.awt.Color(0, 204, 51));
+        jBtnAdd.setText("+ Add");
+        jBtnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBtnAddActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
-                .addContainerGap(100, Short.MAX_VALUE))
+        javax.swing.GroupLayout jDlgAddLayout = new javax.swing.GroupLayout(jDlgAdd.getContentPane());
+        jDlgAdd.getContentPane().setLayout(jDlgAddLayout);
+        jDlgAddLayout.setHorizontalGroup(
+            jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDlgAddLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTxtAdd)
+                    .addComponent(jLblAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jDlgAddLayout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jBtnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap(34, Short.MAX_VALUE))
+        jDlgAddLayout.setVerticalGroup(
+            jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDlgAddLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLblAdd)
+                .addGap(29, 29, 29)
+                .addComponent(jTxtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jBtnAdd)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jDialog1.pack();
+        jDlgAdd.pack();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("StatusMCServerTool");
         setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane.setToolTipText("");
 
         jPnlMain.setLayout(new javax.swing.BoxLayout(jPnlMain, javax.swing.BoxLayout.Y_AXIS));
 
         jPanelIntro.setPreferredSize(new java.awt.Dimension(480, 168));
 
-        jLblAdd.setText("Click the + button to add more servers:");
+        jLblIntro.setText("Click the + button to add more servers:");
 
-        jBtnAdd.setBackground(new java.awt.Color(0, 204, 51));
-        jBtnAdd.setText("+");
-        jBtnAdd.addActionListener(new java.awt.event.ActionListener() {
+        jBtnIntroAdd.setBackground(new java.awt.Color(0, 204, 51));
+        jBtnIntroAdd.setText("+");
+        jBtnIntroAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAddActionPerformed(evt);
+                jBtnIntroAddActionPerformed(evt);
             }
         });
 
@@ -131,60 +139,94 @@ public class TestFrame extends javax.swing.JFrame {
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
                 .addContainerGap(211, Short.MAX_VALUE)
-                .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(212, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
         jPanelIntroLayout.setVerticalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
                 .addContainerGap(48, Short.MAX_VALUE)
-                .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 54, Short.MAX_VALUE)
-                .addComponent(jBtnAdd)
+                .addComponent(jBtnIntroAdd)
                 .addContainerGap())
         );
 
         jPnlMain.add(jPanelIntro);
 
-        jLblImage.setText("jLabel2");
+        jLblImage.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLblImage.setText("ip.a.a.a:25555");
 
-        jPnlInfo.setLayout(new java.awt.GridLayout(2, 2));
+        jPnlInfo.setLayout(new java.awt.GridBagLayout());
 
-        jLblIpHosts.setText("ip.a.a.a:25555");
-        jPnlInfo.add(jLblIpHosts);
-
-        jLblOnline.setText("Online");
-        jPnlInfo.add(jLblOnline);
-
+        jLblVersion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblVersion.setText("Version MC");
-        jPnlInfo.add(jLblVersion);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPnlInfo.add(jLblVersion, gridBagConstraints);
 
+        jLblOnline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblOnline.setText("Online");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jLblOnline, gridBagConstraints);
+
+        jLblPlayers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblPlayers.setText("Players");
-        jPnlInfo.add(jLblPlayers);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jLblPlayers, gridBagConstraints);
+
+        jLblIpHosts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblIpHosts.setText("IMG");
 
         javax.swing.GroupLayout jPnlDataExLayout = new javax.swing.GroupLayout(jPnlDataEx);
         jPnlDataEx.setLayout(jPnlDataExLayout);
         jPnlDataExLayout.setHorizontalGroup(
             jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnlDataExLayout.createSequentialGroup()
-                .addContainerGap(204, Short.MAX_VALUE)
-                .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addContainerGap(195, Short.MAX_VALUE)
+                .addGroup(jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblIpHosts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblImage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         jPnlDataExLayout.setVerticalGroup(
             jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlDataExLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+            .addGroup(jPnlDataExLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(jPnlDataExLayout.createSequentialGroup()
+                        .addComponent(jLblIpHosts, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPnlDataLayout = new javax.swing.GroupLayout(jPnlData);
@@ -211,14 +253,15 @@ public class TestFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
-        jDialog1.setVisible(true);
-    }//GEN-LAST:event_jBtnAddActionPerformed
+    private void jBtnIntroAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIntroAddActionPerformed
+        jDlgAdd.setVisible(true);
+    }//GEN-LAST:event_jBtnIntroAddActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jDialog1.setVisible(false);
+    private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
+        jDlgAdd.setVisible(false);
+        jTxtAdd.setText("");
         addPanel();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBtnAddActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,14 +302,14 @@ public class TestFrame extends javax.swing.JFrame {
     }
 
     private void addPanel() {
-        JPanel jNewPanel = new JPanel();
+        JPanel jPanelServer = new JPanel();
         String ipServer = "";
         int port = 25565; // Default port of the servers
 
-        String JLabelText = jTextField1.getText();
+        String JTxtText = jTxtAdd.getText();
 
-        if (JLabelText.length() != 0) {
-            String[] ipServerArray = JLabelText.split(":");
+        if (JTxtText.length() != 0) {
+            String[] ipServerArray = JTxtText.split(":");
 
             ipServer = ipServerArray[0];
 
@@ -277,47 +320,45 @@ public class TestFrame extends javax.swing.JFrame {
 
         StatusMCServer statusServer = new StatusMCServer(ipServer, port);
 
-        JLabel jLabelE1 = new JLabel(JLabelText);
-        JLabel jLabelE2 = new JLabel(JLabelText);
-        JLabel jLabelE3 = new JLabel(statusServer.showDataSection(JLabelText, "online"));
-        JLabel jLabelE4 = new JLabel(statusServer.showDataSection(JLabelText, "version"));
-        JLabel jLabelE5 = new JLabel(statusServer.showDataSection(JLabelText, "players"));
+        JLabel jLabelD1 = new JLabel(JTxtText);
+        JLabel jLabelD2 = new JLabel(JTxtText);
+        JLabel jLabelD3 = new JLabel(statusServer.showDataSection(JTxtText, "online"));
+        JLabel jLabelD4 = new JLabel(statusServer.showDataSection(JTxtText, "version"));
+        JLabel jLabelD5 = new JLabel(statusServer.showDataSection(JTxtText, "players"));
 
-        GroupLayout jLayoutE = new GroupLayout(jNewPanel);
-        jNewPanel.setLayout(jLayoutE);
+        GroupLayout jLayoutServer = new GroupLayout(jPanelServer);
+        jPanelServer.setLayout(jLayoutServer);
 
         JPanel jPanelData = new JPanel();
         jPanelData.setLayout(new java.awt.GridLayout(2, 2));
 
-        jLayoutE.setHorizontalGroup(
-                jLayoutE.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jLayoutE.createSequentialGroup()
-                                .addContainerGap(204, Short.MAX_VALUE)
-                                .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                                .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(250, Short.MAX_VALUE))
+        jLayoutServer.setHorizontalGroup(jLayoutServer.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(jLayoutServer.createSequentialGroup()
+                        .addContainerGap(204, Short.MAX_VALUE)
+                        .addComponent(jLabelD1, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(250, Short.MAX_VALUE))
         );
-        jLayoutE.setVerticalGroup(
-                jLayoutE.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, jLayoutE.createSequentialGroup()
-                                .addContainerGap(42, Short.MAX_VALUE)
-                                .addGroup(jLayoutE.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelE1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(29, Short.MAX_VALUE))
+        jLayoutServer.setVerticalGroup(jLayoutServer.createParallelGroup(GroupLayout.Alignment.LEADING)
+                .addGroup(GroupLayout.Alignment.TRAILING, jLayoutServer.createSequentialGroup()
+                        .addContainerGap(42, Short.MAX_VALUE)
+                        .addGroup(jLayoutServer.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabelD1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(29, Short.MAX_VALUE))
         );
 
         // Debugging setBorder
-        jNewPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        jPanelServer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         // Add labels of the panel
-        jPanelData.add(jLabelE2);
-        jPanelData.add(jLabelE3);
-        jPanelData.add(jLabelE4);
-        jPanelData.add(jLabelE5);
+        jPanelData.add(jLabelD2);
+        jPanelData.add(jLabelD3);
+        jPanelData.add(jLabelD4);
+        jPanelData.add(jLabelD5);
 
-        jPnlMain.add(jNewPanel);
+        jPnlMain.add(jPanelServer);
         jPnlMain.revalidate();
         jPnlMain.repaint();
         start();
@@ -437,11 +478,11 @@ public class TestFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jBtnIntroAdd;
+    private javax.swing.JDialog jDlgAdd;
     private javax.swing.JLabel jLblAdd;
     private javax.swing.JLabel jLblImage;
+    private javax.swing.JLabel jLblIntro;
     private javax.swing.JLabel jLblIpHosts;
     private javax.swing.JLabel jLblOnline;
     private javax.swing.JLabel jLblPlayers;
@@ -452,6 +493,6 @@ public class TestFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPnlInfo;
     private javax.swing.JPanel jPnlMain;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTxtAdd;
     // End of variables declaration//GEN-END:variables
 }
