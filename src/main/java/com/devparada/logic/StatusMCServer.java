@@ -119,9 +119,9 @@ public class StatusMCServer {
                     case "online" -> {
                         String statusServerOnline;
                         if (section.equals(key)) {
-                            statusServerOnline = "offline";
+                            statusServerOnline = "Offline";
                             if ("true".equals(value.getAsString())) {
-                                statusServerOnline = "online";
+                                statusServerOnline = "Online";
                             }
                             textResult = statusServerOnline;
                         }
@@ -139,7 +139,17 @@ public class StatusMCServer {
                             textResult = playersNumber + "/" + maxPlayers + " players";
                         }
                     }
+                    case "icon" -> {
+                        if (section.equals(key)) {
+                            String icon = value.getAsString();
 
+                            if (icon.contains(",")) {
+                                icon = icon.split(",")[1];
+                            }
+
+                            textResult = icon;
+                        }
+                    }
                 }
             }
         }
