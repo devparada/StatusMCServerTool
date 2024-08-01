@@ -20,16 +20,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author devparada
  */
 public class DBManager {
-
-    private static final Logger logger = Logger.getLogger(DBManager.class.getName());
 
     public static Connection connection;
     private static final String SQL_CREATE = """
@@ -42,7 +39,7 @@ public class DBManager {
             connection = DriverManager.getConnection("jdbc:sqlite:MCServers.db");
             System.out.println("Connect");
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "An error occurred", e);
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
         }
         return connection;
     }
@@ -57,7 +54,7 @@ public class DBManager {
             connection.close();
             return true;
         } catch (SQLException e) {
-            logger.log(Level.SEVERE, "An error occurred", e);
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }
