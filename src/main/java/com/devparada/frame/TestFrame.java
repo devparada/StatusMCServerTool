@@ -18,13 +18,12 @@ package com.devparada.frame;
 
 import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
-import java.awt.Color;
 import java.awt.Component;
-import java.io.File;
-import javax.swing.BorderFactory;
-import javax.swing.GroupLayout;
+import java.awt.GridBagConstraints;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import java.io.File;
 
 /**
  *
@@ -32,11 +31,21 @@ import javax.swing.JPanel;
  */
 public class TestFrame extends javax.swing.JFrame {
 
+    private String HostIpDialog;
+
     /**
      * Creates new form TestFrame
      */
     public TestFrame() {
         initComponents();
+    }
+
+    public String getHostIpDialog() {
+        return HostIpDialog;
+    }
+
+    public void setHostIpDialog(String HostIpDialog) {
+        this.HostIpDialog = HostIpDialog;
     }
 
     /**
@@ -50,27 +59,32 @@ public class TestFrame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jDlgAdd = new javax.swing.JDialog();
-        jLblAdd = new javax.swing.JLabel();
+        jLblAdd = new javax.swing.JTextField();
         jTxtAdd = new javax.swing.JTextField();
         jBtnAdd = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         jPnlMain = new javax.swing.JPanel();
         jPanelIntro = new javax.swing.JPanel();
-        jLblIntro = new javax.swing.JLabel();
         jBtnIntroAdd = new javax.swing.JButton();
-        jPnlData = new javax.swing.JPanel();
-        jPnlDataEx = new javax.swing.JPanel();
-        jLblImage = new javax.swing.JLabel();
+        jLblIntro = new javax.swing.JTextField();
         jPnlInfo = new javax.swing.JPanel();
-        jLblVersion = new javax.swing.JLabel();
-        jLblOnline = new javax.swing.JLabel();
-        jLblPlayers = new javax.swing.JLabel();
-        jLblIpHosts = new javax.swing.JLabel();
+        jLblImage = new javax.swing.JTextField();
+        jLblVersion2 = new javax.swing.JTextField();
+        jLblIHostIp3 = new javax.swing.JTextField();
+        jLblOnline4 = new javax.swing.JTextField();
+        jLblPlayers5 = new javax.swing.JTextField();
 
         jDlgAdd.setTitle("Add Server");
+        jDlgAdd.setModal(true);
+        jDlgAdd.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        jDlgAdd.setName("dialogAddServer"); // NOI18N
 
-        jLblAdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblAdd.setEditable(false);
+        jLblAdd.setBackground(new java.awt.Color(214, 217, 223));
+        jLblAdd.setForeground(new java.awt.Color(0, 0, 0));
+        jLblAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jLblAdd.setText("Intraduce the server IP (with port if different)");
+        jLblAdd.setBorder(null);
 
         jTxtAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTxtAdd.setText("myserverminecraft.ddns.net:24321");
@@ -101,19 +115,21 @@ public class TestFrame extends javax.swing.JFrame {
         jDlgAddLayout.setVerticalGroup(
             jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDlgAddLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jLblAdd)
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jTxtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jBtnAdd)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jDlgAdd.pack();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
+        setMinimumSize(new java.awt.Dimension(759, 403));
+        setPreferredSize(new java.awt.Dimension(759, 403));
         setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
@@ -123,8 +139,6 @@ public class TestFrame extends javax.swing.JFrame {
 
         jPanelIntro.setPreferredSize(new java.awt.Dimension(480, 168));
 
-        jLblIntro.setText("Click the + button to add more servers:");
-
         jBtnIntroAdd.setBackground(new java.awt.Color(0, 204, 51));
         jBtnIntroAdd.setText("+");
         jBtnIntroAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -133,118 +147,119 @@ public class TestFrame extends javax.swing.JFrame {
             }
         });
 
+        jLblIntro.setEditable(false);
+        jLblIntro.setBackground(new java.awt.Color(214, 217, 223));
+        jLblIntro.setForeground(new java.awt.Color(0, 0, 0));
+        jLblIntro.setText("Click the + button to add more servers:");
+        jLblIntro.setBorder(null);
+
         javax.swing.GroupLayout jPanelIntroLayout = new javax.swing.GroupLayout(jPanelIntro);
         jPanelIntro.setLayout(jPanelIntroLayout);
         jPanelIntroLayout.setHorizontalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
-                .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(212, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addContainerGap(201, Short.MAX_VALUE)
+                .addGroup(jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelIntroLayout.createSequentialGroup()
+                        .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelIntroLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                        .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(152, 152, 152))))
         );
         jPanelIntroLayout.setVerticalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(48, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jBtnIntroAdd)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPnlMain.add(jPanelIntro);
 
-        jLblImage.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLblImage.setText("ip.a.a.a:25555");
-
         jPnlInfo.setLayout(new java.awt.GridBagLayout());
 
-        jLblVersion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblVersion.setText("Version MC");
+        jLblImage.setEditable(false);
+        jLblImage.setBackground(new java.awt.Color(214, 217, 223));
+        jLblImage.setForeground(new java.awt.Color(0, 0, 0));
+        jLblImage.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLblImage.setText("IMG");
+        jLblImage.setBorder(null);
+        jLblImage.setMinimumSize(new java.awt.Dimension(46, 35));
+        jLblImage.setPreferredSize(new java.awt.Dimension(46, 35));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jLblImage, gridBagConstraints);
+
+        jLblVersion2.setEditable(false);
+        jLblVersion2.setBackground(new java.awt.Color(214, 217, 223));
+        jLblVersion2.setForeground(new java.awt.Color(0, 0, 0));
+        jLblVersion2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLblVersion2.setText("Version MC");
+        jLblVersion2.setBorder(null);
+        jLblVersion2.setMinimumSize(new java.awt.Dimension(96, 35));
+        jLblVersion2.setPreferredSize(new java.awt.Dimension(96, 35));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPnlInfo.add(jLblVersion, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jLblVersion2, gridBagConstraints);
 
-        jLblOnline.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblOnline.setText("Online");
+        jLblIHostIp3.setEditable(false);
+        jLblIHostIp3.setBackground(new java.awt.Color(214, 217, 223));
+        jLblIHostIp3.setForeground(new java.awt.Color(0, 0, 0));
+        jLblIHostIp3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        jLblIHostIp3.setText("ip.a.a.a:25555");
+        jLblIHostIp3.setBorder(null);
+        jLblIHostIp3.setMinimumSize(new java.awt.Dimension(96, 35));
+        jLblIHostIp3.setPreferredSize(new java.awt.Dimension(196, 35));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.ipadx = 10;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPnlInfo.add(jLblOnline, gridBagConstraints);
+        jPnlInfo.add(jLblIHostIp3, gridBagConstraints);
 
-        jLblPlayers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblPlayers.setText("Players");
+        jLblOnline4.setEditable(false);
+        jLblOnline4.setBackground(new java.awt.Color(214, 217, 223));
+        jLblOnline4.setForeground(new java.awt.Color(0, 0, 0));
+        jLblOnline4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLblOnline4.setText("Online");
+        jLblOnline4.setBorder(null);
+        jLblOnline4.setMinimumSize(new java.awt.Dimension(96, 35));
+        jLblOnline4.setPreferredSize(new java.awt.Dimension(96, 35));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPnlInfo.add(jLblPlayers, gridBagConstraints);
+        jPnlInfo.add(jLblOnline4, gridBagConstraints);
 
-        jLblIpHosts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblIpHosts.setText("IMG");
+        jLblPlayers5.setEditable(false);
+        jLblPlayers5.setBackground(new java.awt.Color(214, 217, 223));
+        jLblPlayers5.setForeground(new java.awt.Color(0, 0, 0));
+        jLblPlayers5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLblPlayers5.setText("Players");
+        jLblPlayers5.setBorder(null);
+        jLblPlayers5.setMinimumSize(new java.awt.Dimension(96, 35));
+        jLblPlayers5.setPreferredSize(new java.awt.Dimension(96, 35));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jLblPlayers5, gridBagConstraints);
 
-        javax.swing.GroupLayout jPnlDataExLayout = new javax.swing.GroupLayout(jPnlDataEx);
-        jPnlDataEx.setLayout(jPnlDataExLayout);
-        jPnlDataExLayout.setHorizontalGroup(
-            jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnlDataExLayout.createSequentialGroup()
-                .addContainerGap(195, Short.MAX_VALUE)
-                .addGroup(jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLblIpHosts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblImage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
-        );
-        jPnlDataExLayout.setVerticalGroup(
-            jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPnlDataExLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addGroup(jPnlDataExLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPnlDataExLayout.createSequentialGroup()
-                        .addComponent(jLblIpHosts, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
-                    .addComponent(jPnlInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPnlDataLayout = new javax.swing.GroupLayout(jPnlData);
-        jPnlData.setLayout(jPnlDataLayout);
-        jPnlDataLayout.setHorizontalGroup(
-            jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 839, Short.MAX_VALUE)
-            .addGroup(jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPnlDataEx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPnlDataLayout.setVerticalGroup(
-            jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 191, Short.MAX_VALUE)
-            .addGroup(jPnlDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPnlDataEx, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPnlMain.add(jPnlData);
+        jPnlMain.add(jPnlInfo);
 
         jScrollPane.setViewportView(jPnlMain);
 
@@ -259,6 +274,7 @@ public class TestFrame extends javax.swing.JFrame {
 
     private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
         jDlgAdd.setVisible(false);
+        setHostIpDialog(jTxtAdd.getText());
         jTxtAdd.setText("");
         addPanel();
     }//GEN-LAST:event_jBtnAddActionPerformed
@@ -306,7 +322,7 @@ public class TestFrame extends javax.swing.JFrame {
         String ipServer = "";
         int port = 25565; // Default port of the servers
 
-        String JTxtText = jTxtAdd.getText();
+        String JTxtText = getHostIpDialog();
 
         if (JTxtText.length() != 0) {
             String[] ipServerArray = JTxtText.split(":");
@@ -320,43 +336,84 @@ public class TestFrame extends javax.swing.JFrame {
 
         StatusMCServer statusServer = new StatusMCServer(ipServer, port);
 
-        JLabel jLabelD1 = new JLabel(JTxtText);
-        JLabel jLabelD2 = new JLabel(JTxtText);
-        JLabel jLabelD3 = new JLabel(statusServer.showDataSection(JTxtText, "online"));
-        JLabel jLabelD4 = new JLabel(statusServer.showDataSection(JTxtText, "version"));
-        JLabel jLabelD5 = new JLabel(statusServer.showDataSection(JTxtText, "players"));
+        JTextField jTxtIMG = new JTextField("IMG");
+        JTextField jTxtHostIp = new JTextField(JTxtText);
+        JTextField jTxtOnline = new JTextField(statusServer.showDataSection(JTxtText, "online"));
+        JTextField jTxtVersion = new JTextField(statusServer.showDataSection(JTxtText, "version"));
+        JTextField jTxtPlayers = new JTextField(statusServer.showDataSection(JTxtText, "players"));
 
-        GroupLayout jLayoutServer = new GroupLayout(jPanelServer);
-        jPanelServer.setLayout(jLayoutServer);
+        GridBagConstraints gridBagConstraints;
 
-        JPanel jPanelData = new JPanel();
-        jPanelData.setLayout(new java.awt.GridLayout(2, 2));
+        jPanelServer.setLayout(new java.awt.GridBagLayout());
 
-        jLayoutServer.setHorizontalGroup(jLayoutServer.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(jLayoutServer.createSequentialGroup()
-                        .addContainerGap(204, Short.MAX_VALUE)
-                        .addComponent(jLabelD1, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 308, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(250, Short.MAX_VALUE))
-        );
-        jLayoutServer.setVerticalGroup(jLayoutServer.createParallelGroup(GroupLayout.Alignment.LEADING)
-                .addGroup(GroupLayout.Alignment.TRAILING, jLayoutServer.createSequentialGroup()
-                        .addContainerGap(42, Short.MAX_VALUE)
-                        .addGroup(jLayoutServer.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabelD1, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jPanelData, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(29, Short.MAX_VALUE))
-        );
+        jTxtIMG.setEditable(false);
+        jTxtIMG.setBackground(new java.awt.Color(214, 217, 223));
+        jTxtIMG.setForeground(new java.awt.Color(0, 0, 0));
+        jTxtIMG.setHorizontalAlignment(JTextField.RIGHT);
+        jTxtIMG.setBorder(null);
+        jTxtIMG.setMinimumSize(new java.awt.Dimension(46, 35));
+        jTxtIMG.setPreferredSize(new java.awt.Dimension(46, 35));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanelServer.add(jTxtIMG, gridBagConstraints);
 
-        // Debugging setBorder
-        jPanelServer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        jTxtVersion.setEditable(false);
+        jTxtVersion.setBackground(new java.awt.Color(214, 217, 223));
+        jTxtVersion.setForeground(new java.awt.Color(0, 0, 0));
+        jTxtVersion.setHorizontalAlignment(JTextField.CENTER);
+        jTxtVersion.setBorder(null);
+        jTxtVersion.setMinimumSize(new java.awt.Dimension(96, 35));
+        jTxtVersion.setPreferredSize(new java.awt.Dimension(96, 35));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanelServer.add(jTxtVersion, gridBagConstraints);
 
-        // Add labels of the panel
-        jPanelData.add(jLabelD2);
-        jPanelData.add(jLabelD3);
-        jPanelData.add(jLabelD4);
-        jPanelData.add(jLabelD5);
+        jTxtHostIp.setEditable(false);
+        jTxtHostIp.setBackground(new java.awt.Color(214, 217, 223));
+        jTxtHostIp.setForeground(new java.awt.Color(0, 0, 0));
+        jTxtHostIp.setHorizontalAlignment(JTextField.RIGHT);
+        jTxtHostIp.setBorder(null);
+        jTxtVersion.setMinimumSize(new java.awt.Dimension(196, 35));
+        jTxtVersion.setPreferredSize(new java.awt.Dimension(196, 35));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanelServer.add(jTxtHostIp, gridBagConstraints);
+
+        jTxtOnline.setEditable(false);
+        jTxtOnline.setBackground(new java.awt.Color(214, 217, 223));
+        jTxtOnline.setForeground(new java.awt.Color(0, 0, 0));
+        jTxtOnline.setBorder(null);
+        jTxtOnline.setMinimumSize(new java.awt.Dimension(96, 35));
+        jTxtOnline.setPreferredSize(new java.awt.Dimension(96, 35));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanelServer.add(jTxtOnline, gridBagConstraints);
+
+        jTxtPlayers.setEditable(false);
+        jTxtPlayers.setBackground(new java.awt.Color(214, 217, 223));
+        jTxtPlayers.setForeground(new java.awt.Color(0, 0, 0));
+        jTxtPlayers.setBorder(null);
+        jTxtPlayers.setMinimumSize(new java.awt.Dimension(96, 35));
+        jTxtPlayers.setPreferredSize(new java.awt.Dimension(96, 35));
+        gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanelServer.add(jTxtPlayers, gridBagConstraints);
 
         jPnlMain.add(jPanelServer);
         jPnlMain.revalidate();
@@ -480,16 +537,14 @@ public class TestFrame extends javax.swing.JFrame {
     private javax.swing.JButton jBtnAdd;
     private javax.swing.JButton jBtnIntroAdd;
     private javax.swing.JDialog jDlgAdd;
-    private javax.swing.JLabel jLblAdd;
-    private javax.swing.JLabel jLblImage;
-    private javax.swing.JLabel jLblIntro;
-    private javax.swing.JLabel jLblIpHosts;
-    private javax.swing.JLabel jLblOnline;
-    private javax.swing.JLabel jLblPlayers;
-    private javax.swing.JLabel jLblVersion;
+    private javax.swing.JTextField jLblAdd;
+    private javax.swing.JTextField jLblIHostIp3;
+    private javax.swing.JTextField jLblImage;
+    private javax.swing.JTextField jLblIntro;
+    private javax.swing.JTextField jLblOnline4;
+    private javax.swing.JTextField jLblPlayers5;
+    private javax.swing.JTextField jLblVersion2;
     private javax.swing.JPanel jPanelIntro;
-    private javax.swing.JPanel jPnlData;
-    private javax.swing.JPanel jPnlDataEx;
     private javax.swing.JPanel jPnlInfo;
     private javax.swing.JPanel jPnlMain;
     private javax.swing.JScrollPane jScrollPane;

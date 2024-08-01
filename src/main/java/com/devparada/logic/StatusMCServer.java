@@ -136,7 +136,7 @@ public class StatusMCServer {
                         if (section.equals(key)) {
                             String playersNumber = value.getAsJsonObject().get("online").getAsString();
                             String maxPlayers = value.getAsJsonObject().get("max").getAsString();
-                            textResult = playersNumber + "/" + maxPlayers;
+                            textResult = playersNumber + "/" + maxPlayers + " players";
                         }
                     }
 
