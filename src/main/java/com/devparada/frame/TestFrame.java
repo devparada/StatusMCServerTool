@@ -19,7 +19,6 @@ package com.devparada.frame;
 import com.devparada.logic.ImageServer;
 import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -429,117 +428,12 @@ public class TestFrame extends javax.swing.JFrame {
         start();
     }
 
-    public JLabel getLabel(JPanel panel) {
-        for (Component comp : panel.getComponents()) {
-            if (comp instanceof JLabel jLabel) {
-                return jLabel;
-            }
-        }
-        return null;
-    }
-
-    public String test(JPanel newPanel) {
-        final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
-        final String[] ipServerArrayFinal = new String[1];
-
-        // Debugging getLabel and newPanel
-        System.out.println(getLabel(newPanel));
-        System.out.println(newPanel);
-
-        //String JLabelText = getLabel(newPanel).getText();
-        String JLabelText = "a";
-
-        if (JLabelText.length() != 0) {
-            System.out.println("Test test");
-            String[] ipServerArray = JLabelText.split(":");
-
-            String ipServer = ipServerArray[0];
-            ipServerArrayFinal[0] = ipServer;
-
-            int port;
-
-            if (ipServerArray.length != 2) {
-                port = 25565; // Default port of the servers
-            } else {
-                port = Integer.parseInt(ipServerArray[1]);
-            }
-
-            StatusMCServer statusServer = new StatusMCServer(ipServer, port);
-            statusServerArrayFinal[0] = statusServer;
-
-            // showDataFrame(statusServerArrayFinal[0], ipServerArrayFinal[0]);
-        }
-
-        /*
-        
-        if (jTxtNameServer.getText().length() != 0) {
-            System.out.println("Test jBtnCheck");
-            String[] ipServerArray = jTxtNameServer.getText().split(":");
-
-            String ipServer = ipServerArray[0];
-            ipServerArrayFinal[0] = ipServer;
-
-            int port;
-
-            if (ipServerArray.length != 2) {
-                port = 25565; // Default port of the servers
-            } else {
-                port = Integer.parseInt(ipServerArray[1]);
-            }
-
-            StatusMCServer statusServer = new StatusMCServer(ipServer, port);
-            statusServerArrayFinal[0] = statusServer;
-
-            showDataFrame(statusServerArrayFinal[0], ipServerArrayFinal[0]);
-         */
-        return "a";
-    }
-
     private void start() {
         File DB = new File("MCServers.db");
         if (!DB.exists()) {
             DBManager.createTable();
         }
-
-        final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
-        final String[] ipServerArrayFinal = new String[1];
-
-        // Add Listener of the click in the boton JBtnCheck
-        /*jBtnCheck.addActionListener((ActionEvent e) -> {
-            if (jTxtNameServer.getText().length() != 0) {
-                System.out.println("Test jBtnCheck");
-                String[] ipServerArray = jTxtNameServer.getText().split(":");
-
-                String ipServer = ipServerArray[0];
-                ipServerArrayFinal[0] = ipServer;
-
-                int port;
-
-                if (ipServerArray.length != 2) {
-                    port = 25565; // Default port of the servers
-                } else {
-                    port = Integer.parseInt(ipServerArray[1]);
-                }
-
-                StatusMCServer statusServer = new StatusMCServer(ipServer, port);
-                statusServerArrayFinal[0] = statusServer;
-
-                showDataFrame(statusServerArrayFinal[0], ipServerArrayFinal[0]);
-            }
-        });*/
     }
-
-    /*
-    private void showDataFrame(StatusMCServer statusServer, String ipServer) {
-        System.out.println("Test showDataFrame");
-        if ("0".equals(statusServer.obtainData(ipServer))) {
-            jLblTxtArResult.setText("Server status:");
-            jTxtArResult.setText("ERROR: Not found this server");
-        } else {
-            jLblTxtArResult.setText("Server status: " + ipServer);
-            jTxtArResult.setText(statusServer.obtainData(ipServer));
-        }
-    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
