@@ -68,6 +68,7 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelIntro = new javax.swing.JPanel();
         jBtnIntroAdd = new javax.swing.JButton();
         jLblIntro = new javax.swing.JTextField();
+        jBtnStatus = new javax.swing.JButton();
         jPnlInfo = new javax.swing.JPanel();
         jLblImage = new javax.swing.JTextField();
         jLblVersion = new javax.swing.JTextField();
@@ -154,6 +155,13 @@ public class InitFrame extends javax.swing.JFrame {
         jLblIntro.setText("Click the + button to add more servers:");
         jLblIntro.setBorder(null);
 
+        jBtnStatus.setText("StatusFrame");
+        jBtnStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnStatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelIntroLayout = new javax.swing.GroupLayout(jPanelIntro);
         jPanelIntro.setLayout(jPanelIntroLayout);
         jPanelIntroLayout.setHorizontalGroup(
@@ -163,17 +171,20 @@ public class InitFrame extends javax.swing.JFrame {
                 .addGroup(jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelIntroLayout.createSequentialGroup()
                         .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBtnStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelIntroLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 280, Short.MAX_VALUE)
-                        .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152))))
+                        .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(152, 152, 152))
         );
         jPanelIntroLayout.setVerticalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addGroup(jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLblIntro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jBtnIntroAdd)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -279,6 +290,11 @@ public class InitFrame extends javax.swing.JFrame {
         jTxtAdd.setText("");
         addPanel();
     }//GEN-LAST:event_jBtnAddActionPerformed
+
+    private void jBtnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnStatusActionPerformed
+        StatusServerFrame frame = new StatusServerFrame();
+        frame.setVisible(true);
+    }//GEN-LAST:event_jBtnStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,6 +454,7 @@ public class InitFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
     private javax.swing.JButton jBtnIntroAdd;
+    private javax.swing.JButton jBtnStatus;
     private javax.swing.JDialog jDlgAdd;
     private javax.swing.JTextField jLblAdd;
     private javax.swing.JTextField jLblIHostIp;
