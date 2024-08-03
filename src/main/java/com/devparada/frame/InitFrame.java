@@ -30,14 +30,14 @@ import javax.swing.JTextField;
  *
  * @author devparada
  */
-public class TestFrame extends javax.swing.JFrame {
+public class InitFrame extends javax.swing.JFrame {
 
     private String HostIpDialog;
 
     /**
-     * Creates new form TestFrame
+     * Creates new form InitFrame
      */
-    public TestFrame() {
+    public InitFrame() {
         initComponents();
     }
 
@@ -130,6 +130,7 @@ public class TestFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
         setMinimumSize(new java.awt.Dimension(759, 403));
+        setPreferredSize(new java.awt.Dimension(759, 403));
         setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
@@ -296,13 +297,13 @@ public class TestFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TestFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TestFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TestFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TestFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -310,7 +311,7 @@ public class TestFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                TestFrame testFrame = new TestFrame();
+                InitFrame testFrame = new InitFrame();
                 testFrame.setVisible(true);
                 testFrame.start();
             }
