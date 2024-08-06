@@ -32,6 +32,9 @@ import javax.swing.JTextField;
  */
 public class InitFrame extends javax.swing.JFrame {
 
+    /**
+     * Saves the host and ip of dialog
+     */
     private String HostIpDialog;
 
     /**
@@ -334,6 +337,13 @@ public class InitFrame extends javax.swing.JFrame {
         });
     }
 
+    private void start() {
+        File DB = new File("MCServers.db");
+        if (!DB.exists()) {
+            DBManager.createTable();
+        }
+    }
+
     private void addPanel() {
         JPanel jPanelServer = new JPanel();
         String ipServer = "";
@@ -442,13 +452,6 @@ public class InitFrame extends javax.swing.JFrame {
         jPnlMain.revalidate();
         jPnlMain.repaint();
         start();
-    }
-
-    private void start() {
-        File DB = new File("MCServers.db");
-        if (!DB.exists()) {
-            DBManager.createTable();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

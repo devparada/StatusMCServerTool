@@ -31,8 +31,8 @@ public class DBManager {
     public static Connection connection;
     private static final String SQL_CREATE = """
                   CREATE TABLE MCServers(
-                  id INT primary key,
-                  name varchar(255), host varchar(255), ip INT)""";
+                  id integer PRIMARY KEY AUTOINCREMENT,
+                  host varchar(255))""";
 
     public static Connection connect() {
         try {
@@ -45,7 +45,7 @@ public class DBManager {
     }
 
     public static boolean createTable() {
-        Statement stmt;
+        Statement stmt = null;
         try {
             connect();
             stmt = connection.createStatement();
@@ -55,6 +55,14 @@ public class DBManager {
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+            }
         }
         return false;
     }
