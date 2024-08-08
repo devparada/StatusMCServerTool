@@ -18,6 +18,7 @@ package com.devparada.persistency;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ import javax.swing.JOptionPane;
  */
 public class DBManager {
 
-    public static Connection connection;
+    private static Connection connection;
     private static final String SQL_CREATE = """
                   CREATE TABLE MCServers(
                   id integer PRIMARY KEY AUTOINCREMENT,
@@ -65,5 +66,26 @@ public class DBManager {
             }
         }
         return false;
+    }
+
+    public void addRow(String hostIp) {
+        PreparedStatement pstmt = null;
+        try {
+            String sql = "INSERT INTO MCServers (host) VALUES (?)";
+            connect();
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, hostIp);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+            }
+        }
     }
 }

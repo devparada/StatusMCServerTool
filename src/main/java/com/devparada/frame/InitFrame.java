@@ -36,6 +36,7 @@ public class InitFrame extends javax.swing.JFrame {
      * Saves the host and ip of dialog
      */
     private String HostIpDialog;
+    private DBManager database = new DBManager();
 
     /**
      * Creates new form InitFrame
@@ -43,11 +44,11 @@ public class InitFrame extends javax.swing.JFrame {
     public InitFrame() {
         initComponents();
     }
-
+    
     public String getHostIpDialog() {
         return HostIpDialog;
     }
-
+    
     public void setHostIpDialog(String HostIpDialog) {
         this.HostIpDialog = HostIpDialog;
     }
@@ -291,6 +292,7 @@ public class InitFrame extends javax.swing.JFrame {
         jDlgAdd.setVisible(false);
         setHostIpDialog(jTxtAdd.getText());
         jTxtAdd.setText("");
+        database.addRow(getHostIpDialog());
         addPanel();
     }//GEN-LAST:event_jBtnAddActionPerformed
 
@@ -336,63 +338,63 @@ public class InitFrame extends javax.swing.JFrame {
             }
         });
     }
-
+    
     private void start() {
         File DB = new File("MCServers.db");
         if (!DB.exists()) {
             DBManager.createTable();
         }
     }
-
+    
     private void addPanel() {
         JPanel jPanelServer = new JPanel();
         String ipServer = "";
         int port = 25565; // Default port of the servers
 
         String JTxtText = getHostIpDialog();
-
+        
         if (JTxtText.length() != 0) {
             String[] ipServerArray = JTxtText.split(":");
-
+            
             ipServer = ipServerArray[0];
-
+            
             if (ipServerArray.length == 2) {
                 port = Integer.parseInt(ipServerArray[1]);
             }
         }
-
+        
         StatusMCServer statusServer = new StatusMCServer(ipServer, port);
-
+        
         JLabel jTxtIMG = new JLabel();
         JTextField jTxtHostIp = new JTextField(JTxtText);
         JTextField jTxtOnline = new JTextField(statusServer.showDataSection(JTxtText, "online"));
         JTextField jTxtVersion = new JTextField(statusServer.showDataSection(JTxtText, "version"));
         JTextField jTxtPlayers = new JTextField(statusServer.showDataSection(JTxtText, "players"));
-
+        
         GridBagConstraints gridBagConstraints;
-
+        
         jPanelServer.setLayout(new java.awt.GridBagLayout());
-
+        
         jTxtIMG.setBackground(new java.awt.Color(214, 217, 223));
         jTxtIMG.setForeground(new java.awt.Color(0, 0, 0));
         jTxtIMG.setHorizontalAlignment(JTextField.RIGHT);
         jTxtIMG.setBorder(null);
         jTxtIMG.setMinimumSize(new java.awt.Dimension(64, 64));
         jTxtIMG.setPreferredSize(new java.awt.Dimension(64, 64));
-
+        
         ImageServer image = new ImageServer();
         // Create ImageIcon with base64 Image without "data:image/png;base64"
         System.out.println(image);
         ImageIcon imageIcon = new ImageIcon(image.showImage(statusServer.showDataSection(JTxtText, "icon")));
         jTxtIMG.setIcon(imageIcon);
-
+        
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanelServer.add(jTxtIMG, gridBagConstraints);
-
+        
         jTxtVersion.setEditable(false);
         jTxtVersion.setBackground(new java.awt.Color(214, 217, 223));
         jTxtVersion.setForeground(new java.awt.Color(0, 0, 0));
@@ -407,7 +409,7 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanelServer.add(jTxtVersion, gridBagConstraints);
-
+        
         jTxtHostIp.setEditable(false);
         jTxtHostIp.setBackground(new java.awt.Color(214, 217, 223));
         jTxtHostIp.setForeground(new java.awt.Color(0, 0, 0));
@@ -421,7 +423,7 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanelServer.add(jTxtHostIp, gridBagConstraints);
-
+        
         jTxtOnline.setEditable(false);
         jTxtOnline.setBackground(new java.awt.Color(214, 217, 223));
         jTxtOnline.setForeground(new java.awt.Color(0, 0, 0));
@@ -434,7 +436,7 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanelServer.add(jTxtOnline, gridBagConstraints);
-
+        
         jTxtPlayers.setEditable(false);
         jTxtPlayers.setBackground(new java.awt.Color(214, 217, 223));
         jTxtPlayers.setForeground(new java.awt.Color(0, 0, 0));
@@ -447,7 +449,7 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanelServer.add(jTxtPlayers, gridBagConstraints);
-
+        
         jPnlMain.add(jPanelServer);
         jPnlMain.revalidate();
         jPnlMain.repaint();
