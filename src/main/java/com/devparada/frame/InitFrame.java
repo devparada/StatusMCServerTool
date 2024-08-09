@@ -20,6 +20,7 @@ import com.devparada.logic.ImageServer;
 import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
 import java.awt.GridBagConstraints;
+import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -381,10 +382,13 @@ public class InitFrame extends javax.swing.JFrame {
         jTxtIMG.setPreferredSize(new java.awt.Dimension(64, 64));
 
         ImageServer image = new ImageServer();
-        // Create ImageIcon with base64 Image without "data:image/png;base64"
         System.out.println(image);
-        ImageIcon imageIcon = new ImageIcon(image.showImage(statusServer.showDataSection(JTxtText, "icon")));
-        jTxtIMG.setIcon(imageIcon);
+        BufferedImage imageServer = image.showImage(statusServer.showDataSection(JTxtText, "icon"));
+        if (image.checkImage(imageServer)) {
+            // Create ImageIcon with base64 Image without "data:image/png;base64"
+            ImageIcon imageIcon = new ImageIcon(imageServer);
+            jTxtIMG.setIcon(imageIcon);
+        }
 
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 0;

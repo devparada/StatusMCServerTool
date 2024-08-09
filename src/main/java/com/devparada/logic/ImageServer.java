@@ -34,12 +34,23 @@ public class ImageServer {
 
         BufferedImage img = null;
         try {
-            ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes);
-            img = ImageIO.read(bis);
+            try (ByteArrayInputStream bis = new ByteArrayInputStream(imageBytes)) {
+                img = ImageIO.read(bis);
+            }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
         }
 
         return img;
+    }
+
+    /**
+     * Check if the server have a image
+     *
+     * @param imageServer image of the server
+     * @return Return true if image is not null
+     */
+    public boolean checkImage(BufferedImage imageServer) {
+        return imageServer != null;
     }
 }
