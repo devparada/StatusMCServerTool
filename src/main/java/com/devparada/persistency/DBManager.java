@@ -17,8 +17,10 @@
 package com.devparada.persistency;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -45,7 +47,7 @@ public class DBManager {
         return connection;
     }
 
-    public static boolean createTable() {
+    public boolean createTable() {
         Statement stmt = null;
         try {
             connect();
@@ -87,5 +89,28 @@ public class DBManager {
                 JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    public boolean checkTable() {
+        ResultSet rs = null;
+        try {
+            connect();
+            DatabaseMetaData dmd = connection.getMetaData();
+            rs = dmd.getTables(null, null, "MCServers", new String[]{"TABLE"});
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        return false;
     }
 }

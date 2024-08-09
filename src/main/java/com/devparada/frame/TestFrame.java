@@ -20,7 +20,6 @@ import com.devparada.logic.ImageServer;
 import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
 import java.awt.GridBagConstraints;
-import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,6 +32,7 @@ import javax.swing.JTextField;
 public class TestFrame extends javax.swing.JFrame {
 
     private String HostIpDialog;
+    private DBManager database = new DBManager();
 
     /**
      * Creates new form TestFrame
@@ -428,9 +428,8 @@ public class TestFrame extends javax.swing.JFrame {
     }
 
     private void start() {
-        File DB = new File("MCServers.db");
-        if (!DB.exists()) {
-            DBManager.createTable();
+        if (!database.checkTable()) {
+            database.createTable();
         }
     }
 

@@ -27,6 +27,8 @@ import java.io.File;
  */
 public class StatusServerFrame extends javax.swing.JFrame {
 
+    private DBManager database = new DBManager();
+
     /**
      * Creates new form StatusServerFrame
      */
@@ -153,10 +155,8 @@ public class StatusServerFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void start() {
-        // Test DB
-        File DB = new File("MCServers.db");
-        if (!DB.exists()) {
-            DBManager.createTable();
+        if (!database.checkTable()) {
+            database.createTable();
         }
         final StatusMCServer[] statusServerArrayFinal = new StatusMCServer[1];
         final String[] ipServerArrayFinal = new String[1];
