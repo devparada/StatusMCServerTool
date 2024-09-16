@@ -74,6 +74,8 @@ public class TestFrame extends javax.swing.JFrame {
         jLblIHostIp = new javax.swing.JTextField();
         jLblOnline = new javax.swing.JTextField();
         jLblPlayers = new javax.swing.JTextField();
+        jBtnEditTest = new javax.swing.JButton();
+        jBtnDeleteTest = new javax.swing.JButton();
 
         jDlgAdd.setTitle("Add Server");
         jDlgAdd.setModal(true);
@@ -259,6 +261,22 @@ public class TestFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPnlInfo.add(jLblPlayers, gridBagConstraints);
 
+        jBtnEditTest.setText("Edit");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jBtnEditTest, gridBagConstraints);
+
+        jBtnDeleteTest.setText("Delete");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPnlInfo.add(jBtnDeleteTest, gridBagConstraints);
+
         jPnlMain.add(jPnlInfo);
 
         jScrollPane.setViewportView(jPnlMain);
@@ -435,6 +453,8 @@ public class TestFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
+    private javax.swing.JButton jBtnDeleteTest;
+    private javax.swing.JButton jBtnEditTest;
     private javax.swing.JButton jBtnIntroAdd;
     private javax.swing.JDialog jDlgAdd;
     private javax.swing.JTextField jLblAdd;

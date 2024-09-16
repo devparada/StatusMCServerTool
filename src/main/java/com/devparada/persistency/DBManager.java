@@ -32,10 +32,6 @@ import javax.swing.JOptionPane;
 public class DBManager {
 
     private static Connection connection;
-    private static final String SQL_CREATE = """
-                  CREATE TABLE MCServers(
-                  id integer PRIMARY KEY AUTOINCREMENT,
-                  host varchar(255))""";
 
     public static Connection connect() {
         try {
@@ -49,10 +45,13 @@ public class DBManager {
 
     public boolean createTable() {
         Statement stmt = null;
+        String sqlCreate = "CREATE TABLE MCServers("
+                + "id integer PRIMARY KEY AUTOINCREMENT,"
+                + "host varchar(255))";
         try {
             connect();
             stmt = connection.createStatement();
-            stmt.executeUpdate(SQL_CREATE);
+            stmt.executeUpdate(sqlCreate);
             stmt.close();
             connection.close();
             return true;
@@ -89,6 +88,29 @@ public class DBManager {
                 JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
             }
         }
+    }
+
+    public boolean deleteRow(String hostIp) {
+        PreparedStatement pstmt = null;
+        try {
+            String sql = "DELETE FROM MCServers WHERE host LIKE ?";
+            connect();
+            pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, hostIp);
+            pstmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        return false;
     }
 
     public boolean checkTable() {
