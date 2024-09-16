@@ -381,10 +381,8 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelServer.add(jBtnEdit, gridBagConstraints);
 
         jBtnDelete.setName(ipServer);
-        jBtnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnDeleteActionPerformed(jBtnEdit.getName());
-            }
+        jBtnDelete.addActionListener((java.awt.event.ActionEvent evt) -> {
+            jBtnDeleteActionPerformed(jBtnEdit.getName());
         });
         gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridx = 3;
@@ -401,6 +399,7 @@ public class InitFrame extends javax.swing.JFrame {
 
     private void jBtnDeleteActionPerformed(String ipString) {
         if (!database.deleteRow(ipString)) {
+            System.out.println("Delete server");
             JOptionPane.showMessageDialog(null, "Non Server Found", "An error occurred", JOptionPane.WARNING_MESSAGE);
         }
     }

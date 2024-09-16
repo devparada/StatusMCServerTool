@@ -33,6 +33,10 @@ public class DBManager {
 
     private static Connection connection;
 
+    public DBManager() {
+        connect();
+    }
+
     public static Connection connect() {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:MCServers.db");
@@ -49,7 +53,6 @@ public class DBManager {
                 + "id integer PRIMARY KEY AUTOINCREMENT,"
                 + "host varchar(255))";
         try {
-            connect();
             stmt = connection.createStatement();
             stmt.executeUpdate(sqlCreate);
             stmt.close();
@@ -73,7 +76,6 @@ public class DBManager {
         PreparedStatement pstmt = null;
         try {
             String sql = "INSERT INTO MCServers (host) VALUES (?)";
-            connect();
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, hostIp);
             pstmt.executeUpdate();
@@ -91,10 +93,10 @@ public class DBManager {
     }
 
     public boolean deleteRow(String hostIp) {
+        System.out.println(hostIp);
         PreparedStatement pstmt = null;
         try {
             String sql = "DELETE FROM MCServers WHERE host LIKE ?";
-            connect();
             pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, hostIp);
             pstmt.executeUpdate();
@@ -116,7 +118,6 @@ public class DBManager {
     public boolean checkTable() {
         ResultSet rs = null;
         try {
-            connect();
             DatabaseMetaData dmd = connection.getMetaData();
             rs = dmd.getTables(null, null, "MCServers", new String[]{"TABLE"});
             if (rs.next()) {
