@@ -21,8 +21,10 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -55,8 +57,6 @@ public class DBManager {
         try {
             stmt = connection.createStatement();
             stmt.executeUpdate(sqlCreate);
-            stmt.close();
-            connection.close();
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
@@ -70,6 +70,47 @@ public class DBManager {
             }
         }
         return false;
+    }
+
+    public ArrayList<Object[]> collectData() {
+        ArrayList<Object[]> dataServers = new ArrayList<>();
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT host FROM McServers";
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(sql);
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int numServer = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Object[] server = new Object[numServer];
+                for (int i = 1; i <= numServer; i++) {
+                    server[i - 1] = rs.getString(i);
+                }
+                dataServers.add(server);
+            }
+            return dataServers;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+            }
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        return null;
     }
 
     public void addRow(String hostIp) {

@@ -21,6 +21,7 @@ import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
 import java.awt.GridBagConstraints;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -279,6 +280,15 @@ public class InitFrame extends javax.swing.JFrame {
         if (!database.checkTable()) {
             database.createTable();
         }
+
+        ArrayList<Object[]> dataServers = database.collectData();
+
+        for (Object[] dataServer : dataServers) {
+            for (Object data : dataServer) {
+                String[] ipServer = data.toString().split(":");
+                addPanel(ipServer[0], Integer.parseInt(ipServer[1]), data.toString());
+            }
+        }
     }
 
     private boolean checkAddDialog() {
@@ -313,8 +323,6 @@ public class InitFrame extends javax.swing.JFrame {
         JButton jBtnEdit = new JButton("Edit");
         JButton jBtnDelete = new JButton("Delete");
 
-        GridBagConstraints gridBagConstraints;
-
         jPanelServer.setLayout(new java.awt.GridBagLayout());
 
         jTxtIMG.setBackground(new java.awt.Color(214, 217, 223));
@@ -331,13 +339,12 @@ public class InitFrame extends javax.swing.JFrame {
             ImageIcon imageIcon = new ImageIcon(imageServer);
             jTxtIMG.setIcon(imageIcon);
         }
-
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jTxtIMG, gridBagConstraints);
+        GridBagConstraints gridBagConstraintsIMG = new GridBagConstraints();
+        gridBagConstraintsIMG.gridx = 0;
+        gridBagConstraintsIMG.gridy = 0;
+        gridBagConstraintsIMG.fill = GridBagConstraints.BOTH;
+        gridBagConstraintsIMG.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jTxtIMG, gridBagConstraintsIMG);
 
         jTxtVersion.setEditable(false);
         jTxtVersion.setBackground(new java.awt.Color(214, 217, 223));
@@ -346,27 +353,27 @@ public class InitFrame extends javax.swing.JFrame {
         jTxtVersion.setBorder(null);
         jTxtVersion.setMinimumSize(new java.awt.Dimension(96, 64));
         jTxtVersion.setPreferredSize(new java.awt.Dimension(96, 64));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jTxtVersion, gridBagConstraints);
+        GridBagConstraints gridBagConstraintsVersion = new GridBagConstraints();
+        gridBagConstraintsVersion.gridx = 1;
+        gridBagConstraintsVersion.gridy = 0;
+        gridBagConstraintsVersion.gridwidth = 2;
+        gridBagConstraintsVersion.fill = GridBagConstraints.BOTH;
+        gridBagConstraintsVersion.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jTxtVersion, gridBagConstraintsVersion);
 
         jTxtHostIp.setEditable(false);
         jTxtHostIp.setBackground(new java.awt.Color(214, 217, 223));
         jTxtHostIp.setForeground(new java.awt.Color(0, 0, 0));
         jTxtHostIp.setHorizontalAlignment(JTextField.RIGHT);
         jTxtHostIp.setBorder(null);
-        jTxtVersion.setMinimumSize(new java.awt.Dimension(196, 64));
-        jTxtVersion.setPreferredSize(new java.awt.Dimension(196, 64));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jTxtHostIp, gridBagConstraints);
+        jTxtHostIp.setMinimumSize(new java.awt.Dimension(196, 64));
+        jTxtHostIp.setPreferredSize(new java.awt.Dimension(196, 64));
+        GridBagConstraints gridBagConstraintsHostIp = new GridBagConstraints();
+        gridBagConstraintsHostIp.gridx = 0;
+        gridBagConstraintsHostIp.gridy = 1;
+        gridBagConstraintsHostIp.fill = GridBagConstraints.BOTH;
+        gridBagConstraintsHostIp.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jTxtHostIp, gridBagConstraintsHostIp);
 
         jTxtOnline.setEditable(false);
         jTxtOnline.setBackground(new java.awt.Color(214, 217, 223));
@@ -375,12 +382,12 @@ public class InitFrame extends javax.swing.JFrame {
         jTxtOnline.setBorder(null);
         jTxtOnline.setMinimumSize(new java.awt.Dimension(96, 64));
         jTxtOnline.setPreferredSize(new java.awt.Dimension(96, 64));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jTxtOnline, gridBagConstraints);
+        GridBagConstraints gridBagConstraintsOnline = new GridBagConstraints();
+        gridBagConstraintsOnline.gridx = 1;
+        gridBagConstraintsOnline.gridy = 1;
+        gridBagConstraintsOnline.fill = GridBagConstraints.BOTH;
+        gridBagConstraintsOnline.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jTxtOnline, gridBagConstraintsOnline);
 
         jTxtPlayers.setEditable(false);
         jTxtPlayers.setBackground(new java.awt.Color(214, 217, 223));
@@ -389,35 +396,33 @@ public class InitFrame extends javax.swing.JFrame {
         jTxtPlayers.setBorder(null);
         jTxtPlayers.setMinimumSize(new java.awt.Dimension(96, 64));
         jTxtPlayers.setPreferredSize(new java.awt.Dimension(96, 64));
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jTxtPlayers, gridBagConstraints);
+        GridBagConstraints gridBagConstraintsPlayers = new GridBagConstraints();
+        gridBagConstraintsPlayers.gridx = 2;
+        gridBagConstraintsPlayers.gridy = 1;
+        gridBagConstraintsPlayers.fill = GridBagConstraints.BOTH;
+        gridBagConstraintsPlayers.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jTxtPlayers, gridBagConstraintsPlayers);
 
-        jBtnEdit.setName(ipServer + ":" + port);
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jBtnEdit, gridBagConstraints);
+        GridBagConstraints gridBagConstraintsEdit = new GridBagConstraints();
+        gridBagConstraintsEdit.gridx = 3;
+        gridBagConstraintsEdit.gridy = 0;
+        gridBagConstraintsEdit.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsEdit.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jBtnEdit, gridBagConstraintsEdit);
 
         jBtnDelete.addActionListener((java.awt.event.ActionEvent evt) -> {
-            jBtnDeleteActionPerformed(jBtnEdit.getName());
+            jBtnDeleteActionPerformed(ipServer + ":" + port);
         });
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        jPanelServer.add(jBtnDelete, gridBagConstraints);
+        GridBagConstraints gridBagConstraintsDelete = new GridBagConstraints();
+        gridBagConstraintsDelete.gridx = 3;
+        gridBagConstraintsDelete.gridy = 1;
+        gridBagConstraintsDelete.fill = GridBagConstraints.HORIZONTAL;
+        gridBagConstraintsDelete.insets = new java.awt.Insets(2, 2, 2, 2);
+        jPanelServer.add(jBtnDelete, gridBagConstraintsDelete);
 
         jPnlMain.add(jPanelServer);
         jPnlMain.revalidate();
         jPnlMain.repaint();
-        start();
     }
 
     private void jBtnDeleteActionPerformed(String ipString) {
