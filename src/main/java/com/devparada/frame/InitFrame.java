@@ -39,6 +39,9 @@ public class InitFrame extends javax.swing.JFrame {
      * Saves the host and ip of dialog
      */
     private String HostIpDialog;
+    /**
+     * Database connection for use methods of DBManager class
+     */
     private final DBManager database = new DBManager();
 
     /**
