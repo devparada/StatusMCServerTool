@@ -21,6 +21,7 @@ import com.devparada.persistency.DBManager;
 import java.awt.event.ActionEvent;
 
 /**
+ * @deprecated Odd interface - Pending remove
  *
  * @author devparada
  */
