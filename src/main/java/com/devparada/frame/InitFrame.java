@@ -39,27 +39,15 @@ import javax.swing.border.EmptyBorder;
 public class InitFrame extends javax.swing.JFrame {
 
     /**
-     * Saves the host and ip of dialog
-     */
-    private String HostIpDialog;
-    /**
      * Database connection for use methods of DBManager class
      */
-    private final DBManager database = new DBManager();
+    protected final DBManager database = new DBManager();
 
     /**
      * Creates new form InitFrame
      */
     public InitFrame() {
         initComponents();
-    }
-
-    public String getHostIpDialog() {
-        return HostIpDialog;
-    }
-
-    public void setHostIpDialog(String HostIpDialog) {
-        this.HostIpDialog = HostIpDialog;
     }
 
     /**
@@ -71,66 +59,12 @@ public class InitFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDlgAdd = new javax.swing.JDialog();
-        jLblAdd = new javax.swing.JTextField();
-        jTxtAdd = new javax.swing.JTextField();
-        jBtnAdd = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
         jPnlMain = new javax.swing.JPanel();
         jPanelIntro = new javax.swing.JPanel();
         jBtnIntroAdd = new javax.swing.JButton();
         jLblLoading = new javax.swing.JLabel();
         jPnlInfo = new javax.swing.JPanel();
-
-        jDlgAdd.setTitle("Add Server");
-        jDlgAdd.setModal(true);
-        jDlgAdd.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        jDlgAdd.setName("dialogAddServer"); // NOI18N
-
-        jLblAdd.setEditable(false);
-        jLblAdd.setBackground(new java.awt.Color(214, 217, 223));
-        jLblAdd.setForeground(new java.awt.Color(0, 0, 0));
-        jLblAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jLblAdd.setText("Intraduce the server IP (with port if different)");
-        jLblAdd.setBorder(null);
-
-        jTxtAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTxtAdd.setText("myserverminecraft.ddns.net:24321");
-
-        jBtnAdd.setBackground(new java.awt.Color(0, 204, 51));
-        jBtnAdd.setText("Add server");
-        jBtnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAddActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jDlgAddLayout = new javax.swing.GroupLayout(jDlgAdd.getContentPane());
-        jDlgAdd.getContentPane().setLayout(jDlgAddLayout);
-        jDlgAddLayout.setHorizontalGroup(
-            jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDlgAddLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTxtAdd)
-                        .addComponent(jLblAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE))
-                    .addComponent(jBtnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jDlgAddLayout.setVerticalGroup(
-            jDlgAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDlgAddLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jTxtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jBtnAdd)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-
-        jDlgAdd.pack();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
@@ -151,6 +85,7 @@ public class InitFrame extends javax.swing.JFrame {
         jBtnIntroAdd.setBackground(new java.awt.Color(127, 255, 0));
         jBtnIntroAdd.setForeground(new java.awt.Color(0, 0, 0));
         jBtnIntroAdd.setText("Add server");
+        jBtnIntroAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnIntroAdd.setMaximumSize(new java.awt.Dimension(150, 40));
         jBtnIntroAdd.setMinimumSize(new java.awt.Dimension(150, 40));
         jBtnIntroAdd.setPreferredSize(new java.awt.Dimension(150, 40));
@@ -170,18 +105,18 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelIntroLayout.setHorizontalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
-                .addGroup(jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                    .addComponent(jLblLoading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE)
+                .addGroup(jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanelIntroLayout.setVerticalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLblLoading)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
@@ -199,33 +134,9 @@ public class InitFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
-        setHostIpDialog(jTxtAdd.getText());
-
-        if (checkAddDialog()) {
-            String[] ipServerArray = getHostIpDialog().split(":");
-            int port = 25565;
-
-            String serverIp = getHostIpDialog();
-            jTxtAdd.setText("");
-
-            if (ipServerArray.length == 2) {
-                port = Integer.parseInt(ipServerArray[1]);
-            } else {
-                serverIp = getHostIpDialog() + ":" + port;
-            }
-
-            System.out.println("False");
-            jDlgAdd.setVisible(false);
-            database.addRow(serverIp);
-            addPanel(ipServerArray[0], port);
-        } else {
-            System.out.println("True");
-            jDlgAdd.setVisible(true);
-        }
-    }//GEN-LAST:event_jBtnAddActionPerformed
-
     private void jBtnIntroAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIntroAddActionPerformed
+        AddServerDialog jDlgAdd = new AddServerDialog(this, true);
+        jDlgAdd.setLocationRelativeTo(null);
         jDlgAdd.setVisible(true);
     }//GEN-LAST:event_jBtnIntroAddActionPerformed
 
@@ -286,34 +197,7 @@ public class InitFrame extends javax.swing.JFrame {
         }
     }
 
-    /**
-     * Check the JTextField the dialog of dialog add server of the database
-     *
-     * @return Return true if checks are correct
-     */
-    private boolean checkAddDialog() {
-        String JTxtText = getHostIpDialog();
-
-        if (JTxtText.length() != 0) {
-            String[] ipServerArray = JTxtText.split(":");
-
-            // \\d+ -> only numbers 
-            if (ipServerArray.length == 2 && !ipServerArray[1].matches("\\d+")) {
-                JOptionPane.showMessageDialog(jDlgAdd, "Port not is number", "Error Add Server", JOptionPane.WARNING_MESSAGE);
-            } else if (ipServerArray.length == 2 && ipServerArray[1].matches("\\d+")) {
-                return true;
-            } else {
-                return true;
-            }
-        } else {
-            JOptionPane.showMessageDialog(jDlgAdd, "IP Server not blank", "Error Add Server", JOptionPane.WARNING_MESSAGE);
-        }
-        return false;
-    }
-
     private void deletePanelServer(JPanel panel) {
-        System.out.println("fdddffd");
-        System.out.println(panel);
         jPnlInfo.remove(panel);
         jPnlInfo.revalidate();
         jPnlInfo.repaint();
@@ -325,12 +209,12 @@ public class InitFrame extends javax.swing.JFrame {
      * @param ipServer server ip
      * @param port server port
      */
-    private void addPanel(String ipServer, int port) {
+    protected void addPanel(String ipServer, int port) {
         StatusMCServer statusServer = new StatusMCServer(ipServer, port);
         String ipServerPort = ipServer + ":" + port;
 
         JPanel jPanelServer = new JPanel(new java.awt.GridBagLayout());
-        jPanelServer.setBackground(new java.awt.Color(27, 38, 59));
+        jPanelServer.setBackground(new Color(27, 38, 59));
         JLabel jTxtIMG = new JLabel();
         JTextField jTxtHostIp = new JTextField(ipServerPort);
         JTextField jTxtOnline = new JTextField(statusServer.showDataSection(ipServerPort, "online"));
@@ -340,10 +224,12 @@ public class InitFrame extends javax.swing.JFrame {
         JButton jBtnEdit = new JButton("Edit");
         jBtnEdit.setBackground(new Color(0, 119, 182));
         jBtnEdit.setForeground(new Color(0, 0, 0));
+        jBtnEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         JButton jBtnDelete = new JButton("Delete");
         jBtnDelete.setBackground(new Color(255, 107, 107));
         jBtnDelete.setForeground(new Color(0, 0, 0));
+        jBtnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         // inset jPanel -> top, left, bottom, right
         jPanelServer.setBorder(new EmptyBorder(0, 100, 0, 100));
@@ -367,8 +253,8 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelServer.add(jTxtIMG, gridBagConstraintsIMG);
 
         jTxtVersion.setEditable(false);
-        jTxtVersion.setForeground(new java.awt.Color(240, 240, 240));
-        jTxtVersion.setBackground(new java.awt.Color(27, 38, 59));
+        jTxtVersion.setForeground(new Color(240, 240, 240));
+        jTxtVersion.setBackground(new Color(27, 38, 59));
         jTxtVersion.setHorizontalAlignment(JTextField.CENTER);
         jTxtVersion.setBorder(null);
         GridBagConstraints gridBagConstraintsVersion = new GridBagConstraints();
@@ -379,8 +265,8 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelServer.add(jTxtVersion, gridBagConstraintsVersion);
 
         jTxtHostIp.setEditable(false);
-        jTxtHostIp.setForeground(new java.awt.Color(240, 240, 240));
-        jTxtHostIp.setBackground(new java.awt.Color(27, 38, 59));
+        jTxtHostIp.setForeground(new Color(240, 240, 240));
+        jTxtHostIp.setBackground(new Color(27, 38, 59));
         jTxtHostIp.setHorizontalAlignment(JTextField.RIGHT);
         jTxtHostIp.setBorder(null);
         GridBagConstraints gridBagConstraintsHostIp = new GridBagConstraints();
@@ -391,8 +277,8 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelServer.add(jTxtHostIp, gridBagConstraintsHostIp);
 
         jTxtOnline.setEditable(false);
-        jTxtOnline.setForeground(new java.awt.Color(240, 240, 240));
-        jTxtOnline.setBackground(new java.awt.Color(27, 38, 59));
+        jTxtOnline.setForeground(new Color(240, 240, 240));
+        jTxtOnline.setBackground(new Color(27, 38, 59));
         jTxtOnline.setHorizontalAlignment(JTextField.CENTER);
         jTxtOnline.setBorder(null);
         GridBagConstraints gridBagConstraintsOnline = new GridBagConstraints();
@@ -403,8 +289,8 @@ public class InitFrame extends javax.swing.JFrame {
         jPanelServer.add(jTxtOnline, gridBagConstraintsOnline);
 
         jTxtPlayers.setEditable(false);
-        jTxtPlayers.setForeground(new java.awt.Color(240, 240, 240));
-        jTxtPlayers.setBackground(new java.awt.Color(27, 38, 59));
+        jTxtPlayers.setForeground(new Color(240, 240, 240));
+        jTxtPlayers.setBackground(new Color(27, 38, 59));
         jTxtPlayers.setHorizontalAlignment(JTextField.CENTER);
         jTxtPlayers.setBorder(null);
         GridBagConstraints gridBagConstraintsPlayers = new GridBagConstraints();
@@ -439,21 +325,17 @@ public class InitFrame extends javax.swing.JFrame {
     private void jBtnDeleteActionPerformed(String ipString, JPanel panel) {
         if (!database.deleteRow(ipString)) {
             JOptionPane.showMessageDialog(null, "Non Server Found", "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } else {
+            deletePanelServer(panel);
         }
-
-        deletePanelServer(panel);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBtnAdd;
     private javax.swing.JButton jBtnIntroAdd;
-    private javax.swing.JDialog jDlgAdd;
-    private javax.swing.JTextField jLblAdd;
     private javax.swing.JLabel jLblLoading;
     private javax.swing.JPanel jPanelIntro;
     private javax.swing.JPanel jPnlInfo;
     private javax.swing.JPanel jPnlMain;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTextField jTxtAdd;
     // End of variables declaration//GEN-END:variables
 }
