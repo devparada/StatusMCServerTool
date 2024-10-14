@@ -19,6 +19,7 @@ package com.devparada.frame;
 import com.devparada.logic.ImageServer;
 import com.devparada.logic.StatusMCServer;
 import com.devparada.persistency.DBManager;
+import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.image.BufferedImage;
@@ -30,6 +31,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -63,20 +66,21 @@ public class InitFrame extends javax.swing.JFrame {
         jPnlMain = new javax.swing.JPanel();
         jPanelIntro = new javax.swing.JPanel();
         jBtnIntroAdd = new javax.swing.JButton();
-        jLblLoading = new javax.swing.JLabel();
         jPnlInfo = new javax.swing.JPanel();
+        jLblLoading = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
-        setBackground(new java.awt.Color(13, 27, 42));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(759, 403));
+        setName("initFrame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(759, 403));
         setResizable(false);
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
+        jScrollPane.setBackground(new java.awt.Color(27, 38, 59));
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jPnlMain.setForeground(new java.awt.Color(51, 51, 255));
+        jPnlMain.setBackground(new java.awt.Color(27, 38, 59));
         jPnlMain.setLayout(new javax.swing.BoxLayout(jPnlMain, javax.swing.BoxLayout.Y_AXIS));
 
         jPanelIntro.setBackground(new java.awt.Color(27, 38, 59));
@@ -95,41 +99,40 @@ public class InitFrame extends javax.swing.JFrame {
             }
         });
 
-        jLblLoading.setBackground(new java.awt.Color(222, 222, 222));
-        jLblLoading.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLblLoading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLblLoading.setText("Loading...");
-
         javax.swing.GroupLayout jPanelIntroLayout = new javax.swing.GroupLayout(jPanelIntro);
         jPanelIntro.setLayout(jPanelIntroLayout);
         jPanelIntroLayout.setHorizontalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
-                .addGroup(jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE)
+                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanelIntroLayout.setVerticalGroup(
             jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(16, 16, 16)
                 .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLblLoading)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         jPnlMain.add(jPanelIntro);
 
         jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
-        jPnlInfo.setLayout(new javax.swing.BoxLayout(jPnlInfo, javax.swing.BoxLayout.Y_AXIS));
+
+        jLblLoading.setBackground(new java.awt.Color(222, 222, 222));
+        jLblLoading.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLblLoading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLblLoading.setText("Loading...");
+        jPnlInfo.add(jLblLoading);
+
+        jPnlMain.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
         jPnlMain.add(jPnlInfo);
 
         jScrollPane.setViewportView(jPnlMain);
 
-        getContentPane().add(jScrollPane);
+        getContentPane().add(jScrollPane, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,12 +153,18 @@ public class InitFrame extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
+            /*
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
+            }*/
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        /*
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -164,14 +173,14 @@ public class InitFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InitFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        }*/
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             InitFrame initFrame = new InitFrame();
             initFrame.setLocationRelativeTo(null);
-            initFrame.setBackground(new java.awt.Color(51, 102, 255)); // Green button
+            initFrame.setBackground(new java.awt.Color(27, 38, 59));
             initFrame.setVisible(true);
             initFrame.start();
         });
