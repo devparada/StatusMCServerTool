@@ -24,6 +24,8 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -46,11 +48,14 @@ public class InitFrame extends javax.swing.JFrame {
      */
     protected final DBManager database = new DBManager();
 
+    private final Timer timer = new Timer();
+
     /**
      * Creates new form InitFrame
      */
     public InitFrame() {
         initComponents();
+        timer.schedule(task, 0, 15000);
     }
 
     /**
@@ -65,10 +70,10 @@ public class InitFrame extends javax.swing.JFrame {
         jScrollPane = new javax.swing.JScrollPane();
         jPnlMain = new javax.swing.JPanel();
         jPnlIntro = new javax.swing.JPanel();
-        jPnlInfo = new javax.swing.JPanel();
         jPnlIntroInfo = new javax.swing.JPanel();
         jBtnIntroAdd = new javax.swing.JButton();
         jLblLoading = new javax.swing.JLabel();
+        jPnlInfo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
@@ -86,13 +91,9 @@ public class InitFrame extends javax.swing.JFrame {
         jPnlMain.setLayout(new javax.swing.BoxLayout(jPnlMain, javax.swing.BoxLayout.Y_AXIS));
 
         jPnlIntro.setBackground(new java.awt.Color(27, 38, 59));
-        jPnlIntro.setLayout(new javax.swing.BoxLayout(jPnlIntro, javax.swing.BoxLayout.PAGE_AXIS));
-        jPnlMain.add(jPnlIntro);
-
-        jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
-        jPnlInfo.setMinimumSize(new java.awt.Dimension(720, 120));
-        jPnlInfo.setPreferredSize(new java.awt.Dimension(480, 60));
-        jPnlInfo.setLayout(new javax.swing.BoxLayout(jPnlInfo, javax.swing.BoxLayout.Y_AXIS));
+        jPnlIntro.setMinimumSize(new java.awt.Dimension(720, 120));
+        jPnlIntro.setPreferredSize(new java.awt.Dimension(480, 60));
+        jPnlIntro.setLayout(new javax.swing.BoxLayout(jPnlIntro, javax.swing.BoxLayout.Y_AXIS));
 
         jPnlIntroInfo.setBackground(new java.awt.Color(27, 38, 59));
         jPnlIntroInfo.setMinimumSize(new java.awt.Dimension(390, 93));
@@ -140,10 +141,14 @@ public class InitFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPnlInfo.add(jPnlIntroInfo);
+        jPnlIntro.add(jPnlIntroInfo);
 
         jPnlMain.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
+        jPnlMain.add(jPnlIntro);
+
+        jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlInfo.setLayout(new javax.swing.BoxLayout(jPnlInfo, javax.swing.BoxLayout.PAGE_AXIS));
         jPnlMain.add(jPnlInfo);
 
         jScrollPane.setViewportView(jPnlMain);
@@ -206,26 +211,35 @@ public class InitFrame extends javax.swing.JFrame {
         if (!database.checkTable()) {
             database.createTable();
         }
+        collectAddServers();
+    }
 
+    private void collectAddServers() {
         ArrayList<Object[]> dataServers = database.collectData();
 
         for (Object[] dataServer : dataServers) {
-            for (Object data : dataServer) {
-                String[] ipServer = data.toString().split(":");
+            String id = dataServer[0].toString();
+            String[] ipServer = dataServer[1].toString().split(":");
 
-                // Used SwingUtilities to prevent concurrence problems
-                SwingUtilities.invokeLater(() -> {
-                    jLblLoading.setVisible(false);
-                    addPanel(ipServer[0], Integer.parseInt(ipServer[1]));
-                });
-            }
+            // Used SwingUtilities to prevent concurrence problems
+            SwingUtilities.invokeLater(() -> {
+                jLblLoading.setVisible(false);
+                int port = Integer.parseInt(ipServer[1]);
+                addPanel(ipServer[0], port, id);
+            });
         }
     }
 
-    private void deletePanelServer(JPanel panel) {
-        jPnlInfo.remove(panel);
-        jPnlInfo.revalidate();
-        jPnlInfo.repaint();
+    TimerTask task = new TimerTask() {
+        @Override
+        public void run() {
+            refreshServer();
+        }
+    };
+
+    private void refreshServer() {
+        collectAddServers();
+        jPnlInfo.removeAll();
     }
 
     /**
@@ -233,32 +247,45 @@ public class InitFrame extends javax.swing.JFrame {
      *
      * @param ipServer server ip
      * @param port server port
+     * @param id server id
      */
-    protected void addPanel(String ipServer, int port) {
+    protected void addPanel(String ipServer, int port, String id) {
         StatusMCServer statusServer = new StatusMCServer(ipServer, port);
         String ipServerPort = ipServer + ":" + port;
 
+        // JPanel create
         JPanel jPanelServer = new JPanel(new java.awt.GridBagLayout());
         jPanelServer.setBackground(new Color(27, 38, 59));
+        jPanelServer.setName("server" + id);
+
+        // Elements create
         JLabel jTxtIMG = new JLabel();
         JTextField jTxtHostIp = new JTextField(ipServerPort);
         JTextField jTxtOnline = new JTextField(statusServer.showDataSection(ipServerPort, "online"));
         JTextField jTxtVersion = new JTextField(statusServer.showDataSection(ipServerPort, "version"));
         JTextField jTxtPlayers = new JTextField(statusServer.showDataSection(ipServerPort, "players"));
 
+        // JButton edit
         JButton jBtnEdit = new JButton("Edit");
         jBtnEdit.setBackground(new Color(0, 119, 182));
         jBtnEdit.setForeground(new Color(0, 0, 0));
         jBtnEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnEdit.setHorizontalAlignment(JTextField.CENTER);
 
+        // JButton delete
         JButton jBtnDelete = new JButton("Delete");
         jBtnDelete.setBackground(new Color(255, 107, 107));
         jBtnDelete.setForeground(new Color(0, 0, 0));
         jBtnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnDelete.setHorizontalAlignment(JTextField.CENTER);
+        jBtnDelete.addActionListener((java.awt.event.ActionEvent evt) -> {
+            jBtnDeleteActionPerformed(ipServerPort, jPanelServer);
+        });
 
         // inset jPanel -> top, left, bottom, right
         jPanelServer.setBorder(new EmptyBorder(0, 100, 0, 100));
 
+        // jTxtIMG
         jTxtIMG.setHorizontalAlignment(JTextField.RIGHT);
         jTxtIMG.setBorder(null);
         jTxtIMG.setMinimumSize(new java.awt.Dimension(64, 64));
@@ -271,17 +298,20 @@ public class InitFrame extends javax.swing.JFrame {
             ImageIcon imageIcon = new ImageIcon(imageServer);
             jTxtIMG.setIcon(imageIcon);
         }
+        // GridBagConstraints jTxtIMG
         GridBagConstraints gridBagConstraintsIMG = new GridBagConstraints();
         gridBagConstraintsIMG.gridx = 0;
         gridBagConstraintsIMG.gridy = 0;
         gridBagConstraintsIMG.fill = GridBagConstraints.BOTH;
         jPanelServer.add(jTxtIMG, gridBagConstraintsIMG);
 
+        // jTxtVersion
         jTxtVersion.setEditable(false);
         jTxtVersion.setForeground(new Color(240, 240, 240));
         jTxtVersion.setBackground(new Color(27, 38, 59));
         jTxtVersion.setHorizontalAlignment(JTextField.CENTER);
         jTxtVersion.setBorder(null);
+        // GridBagConstraints jTxtVersion
         GridBagConstraints gridBagConstraintsVersion = new GridBagConstraints();
         gridBagConstraintsVersion.gridx = 1;
         gridBagConstraintsVersion.gridy = 0;
@@ -289,11 +319,13 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraintsVersion.fill = GridBagConstraints.BOTH;
         jPanelServer.add(jTxtVersion, gridBagConstraintsVersion);
 
+        // jTxtHostIp
         jTxtHostIp.setEditable(false);
         jTxtHostIp.setForeground(new Color(240, 240, 240));
         jTxtHostIp.setBackground(new Color(27, 38, 59));
         jTxtHostIp.setHorizontalAlignment(JTextField.RIGHT);
         jTxtHostIp.setBorder(null);
+        // GridBagConstraints jTxtHostIp
         GridBagConstraints gridBagConstraintsHostIp = new GridBagConstraints();
         gridBagConstraintsHostIp.gridx = 0;
         gridBagConstraintsHostIp.gridy = 1;
@@ -301,11 +333,13 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraintsHostIp.fill = GridBagConstraints.BOTH;
         jPanelServer.add(jTxtHostIp, gridBagConstraintsHostIp);
 
+        // jTxtOnline
         jTxtOnline.setEditable(false);
         jTxtOnline.setForeground(new Color(240, 240, 240));
         jTxtOnline.setBackground(new Color(27, 38, 59));
         jTxtOnline.setHorizontalAlignment(JTextField.CENTER);
         jTxtOnline.setBorder(null);
+        // GridBagConstraints jTxtOnline
         GridBagConstraints gridBagConstraintsOnline = new GridBagConstraints();
         gridBagConstraintsOnline.gridx = 1;
         gridBagConstraintsOnline.gridy = 1;
@@ -313,11 +347,13 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraintsOnline.fill = GridBagConstraints.BOTH;
         jPanelServer.add(jTxtOnline, gridBagConstraintsOnline);
 
+        // jTxtPlayers
         jTxtPlayers.setEditable(false);
         jTxtPlayers.setForeground(new Color(240, 240, 240));
         jTxtPlayers.setBackground(new Color(27, 38, 59));
         jTxtPlayers.setHorizontalAlignment(JTextField.CENTER);
         jTxtPlayers.setBorder(null);
+        // GridBagConstraints jTxtPlayers
         GridBagConstraints gridBagConstraintsPlayers = new GridBagConstraints();
         gridBagConstraintsPlayers.gridx = 2;
         gridBagConstraintsPlayers.gridy = 1;
@@ -325,17 +361,14 @@ public class InitFrame extends javax.swing.JFrame {
         gridBagConstraintsPlayers.fill = GridBagConstraints.BOTH;
         jPanelServer.add(jTxtPlayers, gridBagConstraintsPlayers);
 
+        // GridBagConstraints jBtnEdit
         GridBagConstraints gridBagConstraintsEdit = new GridBagConstraints();
         gridBagConstraintsEdit.gridx = 3;
         gridBagConstraintsEdit.gridy = 0;
         gridBagConstraintsEdit.fill = GridBagConstraints.HORIZONTAL;
-        jBtnEdit.setHorizontalAlignment(JTextField.CENTER);
         jPanelServer.add(jBtnEdit, gridBagConstraintsEdit);
 
-        jBtnDelete.addActionListener((java.awt.event.ActionEvent evt) -> {
-            jBtnDeleteActionPerformed(ipServerPort, jPanelServer);
-        });
-        jBtnDelete.setHorizontalAlignment(JTextField.CENTER);
+        // GridBagConstraints JBtnDelete
         GridBagConstraints gridBagConstraintsDelete = new GridBagConstraints();
         gridBagConstraintsDelete.gridx = 3;
         gridBagConstraintsDelete.gridy = 1;
@@ -347,8 +380,14 @@ public class InitFrame extends javax.swing.JFrame {
         jPnlInfo.repaint();
     }
 
+    private void deletePanelServer(JPanel panel) {
+        jPnlInfo.remove(panel);
+        jPnlInfo.revalidate();
+        jPnlInfo.repaint();
+    }
+
     private void jBtnDeleteActionPerformed(String ipString, JPanel panel) {
-        if (!database.deleteRow(ipString)) {
+        if (!database.deleteServer(ipString)) {
             JOptionPane.showMessageDialog(null, "Non Server Found", "An error occurred", JOptionPane.WARNING_MESSAGE);
         } else {
             deletePanelServer(panel);

@@ -178,8 +178,8 @@ public class AddServerDialog extends javax.swing.JDialog {
             }
 
             this.setVisible(false);
-            jFrame.database.addRow(serverIp);
-            jFrame.addPanel(ipServerArray[0], port);
+            jFrame.database.addServer(serverIp);
+            jFrame.addPanel(ipServerArray[0], port, String.valueOf(jFrame.database.insertDataAndGetLastID(serverIp)));
         } else {
             this.setVisible(true);
         }

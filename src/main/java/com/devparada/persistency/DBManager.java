@@ -44,7 +44,7 @@ public class DBManager {
             connection = DriverManager.getConnection("jdbc:sqlite:MCServers.db");
             System.out.println("Connect");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.ERROR_MESSAGE);
         }
         return connection;
     }
@@ -77,7 +77,7 @@ public class DBManager {
         Statement stmt = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT host FROM McServers";
+            String sql = "SELECT * FROM MCServers";
             stmt = connection.createStatement();
             rs = stmt.executeQuery(sql);
 
@@ -86,9 +86,9 @@ public class DBManager {
 
             while (rs.next()) {
                 Object[] server = new Object[numServer];
-                for (int i = 1; i <= numServer; i++) {
-                    server[i - 1] = rs.getString(i);
-                }
+                server[0] = rs.getInt("id");
+                server[1] = rs.getString("host");
+
                 dataServers.add(server);
             }
             return dataServers;
@@ -102,18 +102,18 @@ public class DBManager {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
             }
-            if (rs != null) {
-                try {
+            try {
+                if (rs != null) {
                     rs.close();
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
                 }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
             }
         }
         return null;
     }
 
-    public void addRow(String hostIp) {
+    public void addServer(String hostIp) {
         PreparedStatement pstmt = null;
         try {
             String sql = "INSERT INTO MCServers (host) VALUES (?)";
@@ -133,7 +133,39 @@ public class DBManager {
         }
     }
 
-    public boolean deleteRow(String hostIp) {
+    public int insertDataAndGetLastID(String host) {
+        int lastInsertId = -1;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sqlLastId = "SELECT last_insert_rowid()";
+            pstmt = connection.prepareStatement(sqlLastId);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                lastInsertId = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+
+        return lastInsertId;
+    }
+
+    public boolean deleteServer(String hostIp) {
         System.out.println(hostIp);
         PreparedStatement pstmt = null;
         try {
@@ -167,12 +199,12 @@ public class DBManager {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
         } finally {
-            if (rs != null) {
-                try {
+            try {
+                if (rs != null) {
                     rs.close();
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
                 }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
             }
         }
         return false;
