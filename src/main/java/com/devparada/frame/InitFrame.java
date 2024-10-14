@@ -64,10 +64,11 @@ public class InitFrame extends javax.swing.JFrame {
 
         jScrollPane = new javax.swing.JScrollPane();
         jPnlMain = new javax.swing.JPanel();
-        jPanelIntro = new javax.swing.JPanel();
+        jPnlIntro = new javax.swing.JPanel();
+        jPnlIntroInfo = new javax.swing.JPanel();
         jBtnIntroAdd = new javax.swing.JButton();
-        jPnlInfo = new javax.swing.JPanel();
         jLblLoading = new javax.swing.JLabel();
+        jPnlInfo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
@@ -81,15 +82,20 @@ public class InitFrame extends javax.swing.JFrame {
         jScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jPnlMain.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlMain.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jPnlMain.setLayout(new javax.swing.BoxLayout(jPnlMain, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanelIntro.setBackground(new java.awt.Color(27, 38, 59));
-        jPanelIntro.setPreferredSize(new java.awt.Dimension(480, 60));
+        jPnlIntro.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlIntro.setLayout(new javax.swing.BoxLayout(jPnlIntro, javax.swing.BoxLayout.PAGE_AXIS));
+
+        jPnlIntroInfo.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlIntroInfo.setMinimumSize(new java.awt.Dimension(390, 93));
 
         jBtnIntroAdd.setBackground(new java.awt.Color(127, 255, 0));
         jBtnIntroAdd.setForeground(new java.awt.Color(0, 0, 0));
         jBtnIntroAdd.setText("Add server");
         jBtnIntroAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnIntroAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jBtnIntroAdd.setMaximumSize(new java.awt.Dimension(150, 40));
         jBtnIntroAdd.setMinimumSize(new java.awt.Dimension(150, 40));
         jBtnIntroAdd.setPreferredSize(new java.awt.Dimension(150, 40));
@@ -99,32 +105,45 @@ public class InitFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanelIntroLayout = new javax.swing.GroupLayout(jPanelIntro);
-        jPanelIntro.setLayout(jPanelIntroLayout);
-        jPanelIntroLayout.setHorizontalGroup(
-            jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelIntroLayout.createSequentialGroup()
-                .addContainerGap(156, Short.MAX_VALUE)
-                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
-        jPanelIntroLayout.setVerticalGroup(
-            jPanelIntroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntroLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
-
-        jPnlMain.add(jPanelIntro);
-
-        jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
-
         jLblLoading.setBackground(new java.awt.Color(222, 222, 222));
         jLblLoading.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLblLoading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLblLoading.setText("Loading...");
-        jPnlInfo.add(jLblLoading);
+        jLblLoading.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLblLoading.setMaximumSize(new java.awt.Dimension(66, 20));
+        jLblLoading.setMinimumSize(new java.awt.Dimension(66, 20));
+
+        javax.swing.GroupLayout jPnlIntroInfoLayout = new javax.swing.GroupLayout(jPnlIntroInfo);
+        jPnlIntroInfo.setLayout(jPnlIntroInfoLayout);
+        jPnlIntroInfoLayout.setHorizontalGroup(
+            jPnlIntroInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlIntroInfoLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPnlIntroInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLblLoading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(120, 120, 120))
+        );
+        jPnlIntroInfoLayout.setVerticalGroup(
+            jPnlIntroInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlIntroInfoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPnlIntro.add(jPnlIntroInfo);
+
+        jPnlMain.add(jPnlIntro);
+
+        jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlInfo.setAlignmentX(0.5F);
+        jPnlInfo.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jPnlInfo.setMinimumSize(new java.awt.Dimension(720, 120));
+        jPnlInfo.setPreferredSize(new java.awt.Dimension(480, 60));
+        jPnlInfo.setLayout(new javax.swing.BoxLayout(jPnlInfo, javax.swing.BoxLayout.Y_AXIS));
 
         jPnlMain.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
@@ -342,8 +361,9 @@ public class InitFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnIntroAdd;
     private javax.swing.JLabel jLblLoading;
-    private javax.swing.JPanel jPanelIntro;
     private javax.swing.JPanel jPnlInfo;
+    private javax.swing.JPanel jPnlIntro;
+    private javax.swing.JPanel jPnlIntroInfo;
     private javax.swing.JPanel jPnlMain;
     private javax.swing.JScrollPane jScrollPane;
     // End of variables declaration//GEN-END:variables
