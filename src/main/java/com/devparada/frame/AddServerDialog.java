@@ -60,59 +60,102 @@ public class AddServerDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPnlDlgAdd = new javax.swing.JPanel();
+        jPnlText = new javax.swing.JPanel();
         jLblAdd = new javax.swing.JTextField();
         jTxtAdd = new javax.swing.JTextField();
+        jPnlButton = new javax.swing.JPanel();
         jBtnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Server");
+        setBackground(new java.awt.Color(27, 38, 59));
         setLocation(new java.awt.Point(0, 0));
+        setPreferredSize(new java.awt.Dimension(300, 200));
         setResizable(false);
 
-        jLblAdd.setEditable(false);
-        jLblAdd.setBackground(new java.awt.Color(214, 217, 223));
-        jLblAdd.setForeground(new java.awt.Color(0, 0, 0));
-        jLblAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jLblAdd.setText("Intraduce the server IP (with port if different)");
-        jLblAdd.setBorder(null);
+        jPnlDlgAdd.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlDlgAdd.setLayout(new javax.swing.BoxLayout(jPnlDlgAdd, javax.swing.BoxLayout.Y_AXIS));
 
+        jPnlText.setBackground(new java.awt.Color(27, 38, 59));
+
+        jLblAdd.setEditable(false);
+        jLblAdd.setBackground(new java.awt.Color(27, 38, 59));
+        jLblAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jLblAdd.setText("Introduce the server IP (with port if different)");
+        jLblAdd.setBorder(null);
+        jLblAdd.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        jTxtAdd.setBackground(new java.awt.Color(27, 38, 59));
         jTxtAdd.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTxtAdd.setText("myserverminecraft.ddns.net:24321");
+        jTxtAdd.setMargin(null);
+        jTxtAdd.setPreferredSize(new java.awt.Dimension(10, 10));
+
+        javax.swing.GroupLayout jPnlTextLayout = new javax.swing.GroupLayout(jPnlText);
+        jPnlText.setLayout(jPnlTextLayout);
+        jPnlTextLayout.setHorizontalGroup(
+            jPnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPnlTextLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTxtAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                    .addComponent(jLblAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPnlTextLayout.setVerticalGroup(
+            jPnlTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlTextLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jTxtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPnlDlgAdd.add(jPnlText);
+
+        jPnlButton.setBackground(new java.awt.Color(27, 38, 59));
 
         jBtnAdd.setBackground(new java.awt.Color(0, 204, 51));
+        jBtnAdd.setForeground(new java.awt.Color(27, 38, 59));
         jBtnAdd.setText("Add server");
         jBtnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtnAdd.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnAdd.setMargin(new java.awt.Insets(2, 40, 2, 40));
         jBtnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAddActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout jPnlButtonLayout = new javax.swing.GroupLayout(jPnlButton);
+        jPnlButton.setLayout(jPnlButtonLayout);
+        jPnlButtonLayout.setHorizontalGroup(
+            jPnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlButtonLayout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addComponent(jBtnAdd)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPnlButtonLayout.setVerticalGroup(
+            jPnlButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPnlButtonLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jBtnAdd)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+
+        jPnlDlgAdd.add(jPnlButton);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTxtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLblAdd))
-                .addContainerGap(54, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPnlDlgAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLblAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTxtAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jBtnAdd)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPnlDlgAdd, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
 
         pack();
@@ -167,52 +210,12 @@ public class AddServerDialog extends javax.swing.JDialog {
         return false;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddServerDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddServerDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddServerDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddServerDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                AddServerDialog dialog = new AddServerDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAdd;
     private javax.swing.JTextField jLblAdd;
+    private javax.swing.JPanel jPnlButton;
+    private javax.swing.JPanel jPnlDlgAdd;
+    private javax.swing.JPanel jPnlText;
     private javax.swing.JTextField jTxtAdd;
     // End of variables declaration//GEN-END:variables
 }

@@ -65,10 +65,10 @@ public class InitFrame extends javax.swing.JFrame {
         jScrollPane = new javax.swing.JScrollPane();
         jPnlMain = new javax.swing.JPanel();
         jPnlIntro = new javax.swing.JPanel();
+        jPnlInfo = new javax.swing.JPanel();
         jPnlIntroInfo = new javax.swing.JPanel();
         jBtnIntroAdd = new javax.swing.JButton();
         jLblLoading = new javax.swing.JLabel();
-        jPnlInfo = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("StatusMCServerTool");
@@ -87,6 +87,12 @@ public class InitFrame extends javax.swing.JFrame {
 
         jPnlIntro.setBackground(new java.awt.Color(27, 38, 59));
         jPnlIntro.setLayout(new javax.swing.BoxLayout(jPnlIntro, javax.swing.BoxLayout.PAGE_AXIS));
+        jPnlMain.add(jPnlIntro);
+
+        jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
+        jPnlInfo.setMinimumSize(new java.awt.Dimension(720, 120));
+        jPnlInfo.setPreferredSize(new java.awt.Dimension(480, 60));
+        jPnlInfo.setLayout(new javax.swing.BoxLayout(jPnlInfo, javax.swing.BoxLayout.Y_AXIS));
 
         jPnlIntroInfo.setBackground(new java.awt.Color(27, 38, 59));
         jPnlIntroInfo.setMinimumSize(new java.awt.Dimension(390, 93));
@@ -118,32 +124,23 @@ public class InitFrame extends javax.swing.JFrame {
         jPnlIntroInfoLayout.setHorizontalGroup(
             jPnlIntroInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPnlIntroInfoLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(170, 170, 170)
                 .addGroup(jPnlIntroInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLblLoading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(120, 120, 120))
+                .addGap(170, 170, 170))
         );
         jPnlIntroInfoLayout.setVerticalGroup(
             jPnlIntroInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPnlIntroInfoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnIntroAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPnlIntro.add(jPnlIntroInfo);
-
-        jPnlMain.add(jPnlIntro);
-
-        jPnlInfo.setBackground(new java.awt.Color(27, 38, 59));
-        jPnlInfo.setAlignmentX(0.5F);
-        jPnlInfo.setMaximumSize(new java.awt.Dimension(32767, 32767));
-        jPnlInfo.setMinimumSize(new java.awt.Dimension(720, 120));
-        jPnlInfo.setPreferredSize(new java.awt.Dimension(480, 60));
-        jPnlInfo.setLayout(new javax.swing.BoxLayout(jPnlInfo, javax.swing.BoxLayout.Y_AXIS));
+        jPnlInfo.add(jPnlIntroInfo);
 
         jPnlMain.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
