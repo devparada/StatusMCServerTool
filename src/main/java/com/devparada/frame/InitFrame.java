@@ -18,6 +18,7 @@ package com.devparada.frame;
 
 import com.devparada.logic.ImageServer;
 import com.devparada.logic.StatusMCServer;
+import com.devparada.model.StatusMCModel;
 import com.devparada.persistency.DBManager;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.Color;
@@ -55,7 +56,7 @@ public class InitFrame extends javax.swing.JFrame {
      */
     public InitFrame() {
         initComponents();
-        timer.schedule(task, 0, 15000);
+        timer.schedule(task, 15000);
     }
 
     /**
@@ -238,8 +239,8 @@ public class InitFrame extends javax.swing.JFrame {
     };
 
     private void refreshServer() {
-        collectAddServers();
         jPnlInfo.removeAll();
+        collectAddServers();
     }
 
     /**
@@ -250,7 +251,9 @@ public class InitFrame extends javax.swing.JFrame {
      * @param id server id
      */
     protected void addPanel(String ipServer, int port, String id) {
-        StatusMCServer statusServer = new StatusMCServer(ipServer, port);
+        StatusMCModel statusMC = new StatusMCModel(ipServer, port);
+
+        StatusMCServer statusServer = new StatusMCServer(statusMC);
         String ipServerPort = ipServer + ":" + port;
 
         // JPanel create
@@ -271,6 +274,7 @@ public class InitFrame extends javax.swing.JFrame {
         jBtnEdit.setForeground(new Color(0, 0, 0));
         jBtnEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBtnEdit.setHorizontalAlignment(JTextField.CENTER);
+        jBtnEdit.setEnabled(false);
 
         // JButton delete
         JButton jBtnDelete = new JButton("Delete");

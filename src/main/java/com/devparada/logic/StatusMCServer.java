@@ -16,15 +16,16 @@
  */
 package com.devparada.logic;
 
+import com.devparada.model.StatusMCModel;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import javax.swing.JOptionPane;
 
 /**
@@ -33,116 +34,77 @@ import javax.swing.JOptionPane;
  */
 public class StatusMCServer {
 
-    public String host;
-    public int port;
+    private final StatusMCModel statusMC;
+    private final String ipServer;
+    /**
+     * The value is OK in HTTPConnection
+     */
+    public static final int HTTP_OK = 200;
 
-    public StatusMCServer(String host, int port) {
-        this.host = host;
-        this.port = port;
+    public StatusMCServer(StatusMCModel statusMC) {
+        this.statusMC = statusMC;
+        ipServer = this.statusMC.getHost() + ":" + this.statusMC.getPort();
     }
 
-    public JsonObject fetchData(String ipServer) {
+    private JsonObject fetchData() {
         if (!ipServer.isEmpty()) {
-            String urlJSON = "https://api.mcstatus.io/v2/status/java/" + ipServer;  // URL of the remote JSON
+            String url = "https://api.mcstatus.io/v2/status/java/" + ipServer;  // URL of the remote JSON
             try {
-                URL url = new URL(urlJSON);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestMethod("GET");
-                conn.setRequestProperty("Accept", "application/json");
+                HttpClient client = HttpClient.newHttpClient();
 
-                if (conn.getResponseCode() == 200) {
-                    BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-                    StringBuilder sb = new StringBuilder();
-                    String output;
-                    while ((output = br.readLine()) != null) {
-                        sb.append(output);
-                    }
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create(url))
+                        .header("Accept", "application/json")
+                        .build();
 
-                    conn.disconnect();
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                    JsonObject jsonReceived = JsonParser.parseString(sb.toString()).getAsJsonObject();
+                if (response.statusCode() == HTTP_OK) {
+                    // Parse the JSON response body
+                    JsonObject jsonReceived = JsonParser.parseString(response.body()).getAsJsonObject();
                     return jsonReceived;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Not data", "An error occurred", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (JsonSyntaxException | IOException e) {
+            } catch (JsonSyntaxException | IOException | InterruptedException e) {
                 JOptionPane.showMessageDialog(null, e, "An error occurred", JOptionPane.WARNING_MESSAGE);
             }
         }
         return null;
     }
 
-    public JsonObject obtainDataJSON(String ipServer) {
-        return fetchData(ipServer);
-    }
-
-    public String obtainData(String ipServer) {
-        return showData(fetchData(ipServer));
-    }
-
-    public String showData(JsonObject jsonReceived) {
-        String textResult = "";
-
-        if (jsonReceived != null) {
-            for (String key : jsonReceived.keySet()) {
-                JsonElement value = jsonReceived.get(key);
-
-                if ("online".equals(key)) {
-                    String statusServerOnline = "offline";
-
-                    if ("true".equals(value.getAsString())) {
-                        statusServerOnline = "online";
-                    }
-                    textResult = "The server is " + statusServerOnline + "\n";
-                }
-
-                if ("version".equals(key)) {
-                    String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
-                    textResult += "Server version " + nameClean + "\n";
-                }
-
-                if ("players".equals(key)) {
-                    String playersNumber = value.getAsJsonObject().get("online").getAsString();
-                    textResult += "Players playing " + playersNumber + "\n";
-                }
-
-            }
-        }
-        return textResult;
-    }
-
     public String showDataSection(String ipServer, String section) {
-        JsonObject jsonReceived = obtainDataJSON(ipServer);
+        JsonObject jsonReceived = fetchData();
         String textResult = "N/A";
 
         if (jsonReceived != null) {
             for (String key : jsonReceived.keySet()) {
-                JsonElement value = jsonReceived.get(key);
-
-                switch (section) {
-                    case "online" -> {
-                        String statusServerOnline;
-                        if (section.equals(key)) {
+                if (section.equals(key)) {
+                    JsonElement value = jsonReceived.get(key);
+                    switch (section) {
+                        case "online" -> {
+                            String statusServerOnline;
                             statusServerOnline = "Offline";
                             if ("true".equals(value.getAsString())) {
                                 statusServerOnline = "Online";
                             }
                             textResult = statusServerOnline;
                         }
-                    }
-                    case "version" -> {
-                        if (section.equals(key)) {
+                        case "version" -> {
                             String nameClean = value.getAsJsonObject().get("name_clean").getAsString();
-                            textResult = nameClean;
+                            String versionName = nameClean;
+
+                            if (nameClean.isEmpty()) {
+                                versionName = "Unknown";
+                            }
+                            textResult = "Version: " + versionName;
                         }
-                    }
-                    case "players" -> {
-                        if (section.equals(key)) {
+                        case "players" -> {
                             String playersNumber = value.getAsJsonObject().get("online").getAsString();
                             String maxPlayers = value.getAsJsonObject().get("max").getAsString();
                             textResult = playersNumber + "/" + maxPlayers + " players";
                         }
-                    }
-                    case "icon" -> {
-                        if (section.equals(key)) {
+                        case "icon" -> {
                             String icon = value.getAsString();
 
                             if (icon.contains(",")) {
