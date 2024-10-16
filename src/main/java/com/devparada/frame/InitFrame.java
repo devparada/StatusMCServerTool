@@ -201,6 +201,8 @@ public class InitFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             InitFrame initFrame = new InitFrame();
+            ImageIcon icon = new ImageIcon(InitFrame.class.getResource("/icons/icon.png"));
+            initFrame.setIconImage(icon.getImage());
             initFrame.setLocationRelativeTo(null);
             initFrame.setBackground(new java.awt.Color(27, 38, 59));
             initFrame.setVisible(true);
