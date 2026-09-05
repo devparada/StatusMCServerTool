@@ -25,8 +25,6 @@ import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -34,6 +32,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.EmptyBorder;
@@ -48,15 +47,23 @@ public class InitFrame extends javax.swing.JFrame {
      * Database connection for use methods of DBManager class
      */
     protected final DBManager database = new DBManager();
+    
+    /**
+     * Miliseconds for the timer
+     */ 
+    private final int TIMER_MS = 15000;
 
-    private final Timer timer = new Timer();
+    /**
+     * Timer for reload data servers
+     */
+    private final Timer timer = new Timer(TIMER_MS, e -> refreshServer());
 
     /**
      * Creates new form InitFrame
      */
     public InitFrame() {
         initComponents();
-        timer.schedule(task, 15000);
+        timer.start();
     }
 
     /**
@@ -232,13 +239,6 @@ public class InitFrame extends javax.swing.JFrame {
             });
         }
     }
-
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            refreshServer();
-        }
-    };
 
     private void refreshServer() {
         jPnlInfo.removeAll();
